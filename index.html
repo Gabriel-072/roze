@@ -125,6 +125,16 @@
 
   /* Savings chip */
   .savings-chip { background: linear-gradient(135deg, #3D6B45 0%, #2D5234 100%); }
+
+  /* Reader popup */
+  .reader-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(10, 34, 25, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 1rem; }
+  .reader-overlay.visible { display: flex; animation: fadeIn .3s ease forwards; }
+  .reader-modal { background: #F4F1EB; border-radius: 1.5rem; max-width: 460px; width: 100%; padding: 1.75rem; position: relative; box-shadow: 0 30px 60px -15px rgba(0,0,0,.35); transform: translateY(20px); animation: slideUp .4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .reader-modal .close-x { position: absolute; top: .75rem; right: .9rem; background: transparent; border: 0; color: #0A2219; opacity: .55; cursor: pointer; padding: .35rem; }
+  .reader-modal .close-x:hover { opacity: 1; }
+  .countdown-num { font-variant-numeric: tabular-nums; display: inline-block; min-width: 1.5em; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -1085,6 +1095,58 @@
   </div>
 </section>
 
+<!-- ============================ READER-EXCLUSIVE POPUP (from advertorial) ============================ -->
+<div id="reader-overlay" class="reader-overlay" role="dialog" aria-modal="true" aria-labelledby="reader-headline">
+  <div class="reader-modal">
+    <button class="close-x" aria-label="Close" data-close-reader>
+      <i class="ph ph-x text-xl"></i>
+    </button>
+
+    <div class="text-center">
+      <p class="text-[10px] tracking-widest uppercase text-rose font-bold mb-2 flex items-center justify-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose pulse"></span>
+        Gulf Wellness Today reader exclusive
+      </p>
+      <h2 id="reader-headline" class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-3">
+        Your <em class="text-rose">10% reader discount</em> is locked in.
+      </h2>
+      <p class="text-sm text-forest/75 mb-5 leading-relaxed">
+        Plus a free Roze bamboo toothbrush with your first 4+2 Free bundle. Total bonus value: <strong class="text-forest">AED 53</strong>.
+      </p>
+
+      <!-- Code reveal -->
+      <div class="bg-forest text-cream rounded-2xl p-4 mb-5">
+        <div class="text-[10px] uppercase tracking-widest text-rose font-bold mb-1">Your code</div>
+        <div class="font-serif text-3xl font-bold tracking-wider">GWREADER10</div>
+        <div class="text-[10px] uppercase tracking-widest text-cream/55 mt-2">Auto-applies at checkout</div>
+      </div>
+
+      <!-- Countdown -->
+      <div class="mb-5">
+        <p class="text-[10px] uppercase tracking-widest text-forest/55 mb-2 font-semibold">Reserved for the next</p>
+        <div class="flex items-center justify-center gap-2">
+          <div class="bg-cream-alt rounded-xl px-3 py-2 min-w-[58px]">
+            <div class="font-serif text-2xl font-bold leading-none countdown-num" data-cd="m">10</div>
+            <div class="text-[9px] uppercase tracking-widest text-forest/55 mt-1">min</div>
+          </div>
+          <div class="text-2xl text-forest/30 font-bold">:</div>
+          <div class="bg-cream-alt rounded-xl px-3 py-2 min-w-[58px]">
+            <div class="font-serif text-2xl font-bold leading-none countdown-num" data-cd="s">00</div>
+            <div class="text-[9px] uppercase tracking-widest text-forest/55 mt-1">sec</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#shop" data-close-reader class="btn-primary block w-full bg-rose text-white py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-rose-dark">
+        Claim My Reader Discount
+      </a>
+      <button data-close-reader class="block w-full text-center text-[11px] text-forest/45 mt-3 underline underline-offset-2 hover:text-forest">
+        No thanks, browse without my discount
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- ============================ STICKY BOTTOM BUY BAR ============================ -->
 <div class="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-cream/95 backdrop-blur-md border-t border-line shadow-lg">
   <div class="max-w-[1400px] mx-auto px-3 py-2.5 flex items-center gap-2.5">
@@ -1333,6 +1395,50 @@
 
     // Initial render
     renderFlavor('mint');
+
+    // ---- Reader popup (from advertorial) ----
+    const overlay = document.getElementById('reader-overlay');
+    if (overlay) {
+      const params = new URLSearchParams(window.location.search);
+      const fromAdvertorial = params.get('from') === 'advertorial' || (document.referrer && /advertorial/.test(document.referrer));
+
+      if (fromAdvertorial) {
+        // Show popup after a short delay so the page renders first
+        setTimeout(() => overlay.classList.add('visible'), 1200);
+
+        // Close handlers
+        overlay.querySelectorAll('[data-close-reader]').forEach(el => {
+          el.addEventListener('click', (e) => {
+            // Allow href anchor to still scroll, but close the modal
+            overlay.classList.remove('visible');
+          });
+        });
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('visible'); });
+
+        // Countdown — persist start time in sessionStorage so refresh doesn't reset
+        const COUNTDOWN_MIN = 10;
+        const STORAGE_KEY = 'roze_reader_cd_start';
+        let start = parseInt(sessionStorage.getItem(STORAGE_KEY) || '0', 10);
+        if (!start) {
+          start = Date.now();
+          sessionStorage.setItem(STORAGE_KEY, String(start));
+        }
+        const endAt = start + COUNTDOWN_MIN * 60 * 1000;
+
+        const cdM = overlay.querySelector('[data-cd="m"]');
+        const cdS = overlay.querySelector('[data-cd="s"]');
+        function tick() {
+          const remain = Math.max(0, endAt - Date.now());
+          const m = Math.floor(remain / 60000);
+          const s = Math.floor((remain % 60000) / 1000);
+          if (cdM) cdM.textContent = String(m).padStart(2, '0');
+          if (cdS) cdS.textContent = String(s).padStart(2, '0');
+          if (remain <= 0) clearInterval(timer);
+        }
+        tick();
+        const timer = setInterval(tick, 1000);
+      }
+    }
   });
 </script>
 
