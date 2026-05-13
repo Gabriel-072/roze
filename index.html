@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0A2219" />
 <title>Natural Fresh Mint Toothpaste — 15% Hydroxyapatite | Roze Biohealth Dubai</title>
 <meta name="description" content="Clinically formulated with 15% Hydroxyapatite. Fluoride-free, dentist-created, safe for the whole family. Made in Dubai by Dr. David Roze." />
@@ -33,6 +33,7 @@
           gold:     '#B08D5B',
           ink:      '#0A0A0A',
           line:     '#E0D9C8',
+          success:  '#3D6B45',
         },
         fontFamily: {
           serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -49,16 +50,23 @@
   body { font-family: 'DM Sans', system-ui, sans-serif; background:#F4F1EB; color:#0A2219; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   .font-serif { font-family:'Playfair Display', Georgia, serif; letter-spacing:-0.01em; }
 
-  /* Hide scrollbars on horizontal scroll containers (flavor selector, carousel) */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; scroll-snap-type: x mandatory; }
   .snap-item { scroll-snap-align: start; }
 
-  /* Subtle paper grain */
-  .noise-overlay { position: fixed; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:9999; opacity:.18;
+  /* Edge fade for horizontal scroll containers */
+  .h-scroll-wrap { position: relative; }
+  .h-scroll-wrap::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+    width: 30px; pointer-events: none;
+    background: linear-gradient(90deg, transparent 0%, #F4F1EB 100%);
+  }
+  .h-scroll-wrap.on-dark::after { background: linear-gradient(90deg, transparent 0%, #0A2219 100%); }
+  .h-scroll-wrap.on-alt::after { background: linear-gradient(90deg, transparent 0%, #EAE6DD 100%); }
+
+  .noise-overlay { position: fixed; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:9999; opacity:.16;
     background:url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E'); }
 
-  /* Scroll reveal */
   .reveal { opacity:0; transform:translateY(28px); transition:all .9s cubic-bezier(0.25, 1, 0.5, 1); will-change:transform, opacity; }
   .reveal.active { opacity:1; transform:translateY(0); }
   .delay-100 { transition-delay:100ms; } .delay-200 { transition-delay:200ms; }
@@ -67,42 +75,57 @@
   summary::-webkit-details-marker { display:none; }
   details[open] summary .plus { transform:rotate(45deg); }
 
-  /* Flavor pill */
   .flavor-pill { transition: all .2s ease; }
   .flavor-pill.active { background:#0A2219; }
   .flavor-pill.active .flavor-label { color:#F4F1EB; }
   .flavor-pill.active .flavor-img-wrap { background:#1B352B; }
 
-  /* Pack card */
   .pack-card { transition: all .25s ease; }
   .pack-card.selected { border-color:#0A2219; background:#FFFCF6; box-shadow:0 8px 24px -10px rgba(10,34,25,.2); }
-  .pack-card.selected .pack-badge { background:#0A2219; color:#F4F1EB; }
-  input[name="pack"], input[name="purchase-type"] { position:absolute; opacity:0; pointer-events:none; }
+  .pack-card.selected .pack-badge.dynamic { background:#0A2219; color:#F4F1EB; }
+  input[name="pack"], input[name="purchase-type"], input[name="addon"] { position:absolute; opacity:0; pointer-events:none; }
   .toggle-pill { transition:all .2s ease; }
   input[name="purchase-type"]:checked + .toggle-pill { background:#0A2219; color:#F4F1EB; }
 
   .marquee-track { animation: marquee 35s linear infinite; }
   @keyframes marquee { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
 
-  /* Big CTA hover */
   .btn-primary { transition: transform .15s ease, box-shadow .25s ease; }
   .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:hover { box-shadow: 0 15px 30px -10px rgba(196,139,128,0.4); }
 
-  /* Sticky bottom CTA on mobile */
-  body { padding-bottom: 88px; }
+  body { padding-bottom: 92px; }
   @media (min-width: 1024px) { body { padding-bottom: 0; } }
 
-  /* Mint-tinted hero block */
   .hero-block { background: linear-gradient(180deg, #E8EFE7 0%, #DDE6DC 100%); }
 
-  /* Quantity stepper */
   .qty-btn { transition: background .15s ease; }
+  .qty-btn:hover { background: rgba(10,34,25,0.06); }
   .qty-btn:active { background: #0A2219; color:#F4F1EB; }
+
+  /* Subscribe benefits panel toggle */
+  .sub-benefits { max-height: 0; overflow: hidden; transition: max-height .4s ease, opacity .3s ease, margin .3s ease; opacity: 0; }
+  .sub-benefits.visible { max-height: 500px; opacity: 1; }
+
+  /* Addon checkbox style */
+  .addon-card { transition: all .2s ease; }
+  input[name="addon"]:checked + .addon-card { border-color: #0A2219; background:#FFFCF6; }
+  input[name="addon"]:checked + .addon-card .addon-check { background:#0A2219; border-color:#0A2219; }
+  input[name="addon"]:checked + .addon-card .addon-check::after { content: '✓'; color:#F4F1EB; font-size:11px; line-height:1; }
+
+  /* Free shipping progress bar */
+  .progress-bar { background: linear-gradient(90deg, #C48B80 0%, #A36F65 100%); transition: width .4s ease; }
+
+  /* Pulse animation for urgency */
+  @keyframes soft-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
+  .pulse { animation: soft-pulse 2.4s ease-in-out infinite; }
+
+  /* Savings chip */
+  .savings-chip { background: linear-gradient(135deg, #3D6B45 0%, #2D5234 100%); }
 </style>
 </head>
 <body>
 
-<!-- Grain overlay -->
 <div class="noise-overlay"></div>
 
 <!-- ============================ ANNOUNCEMENT BAR ============================ -->
@@ -114,11 +137,15 @@
     <span class="text-cream/30">◆</span>
     <span class="flex items-center gap-2"><i class="ph-fill ph-clock text-rose"></i> Order by 3pm for next-day delivery</span>
     <span class="text-cream/30">◆</span>
+    <span class="flex items-center gap-2"><i class="ph-fill ph-leaf text-rose"></i> 100% Natural · Made in Dubai</span>
+    <span class="text-cream/30">◆</span>
     <span class="flex items-center gap-2"><i class="ph-fill ph-truck text-rose"></i> Free UAE delivery over AED 300</span>
     <span class="text-cream/30">◆</span>
     <span class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-rose"></i> 7-day money-back guarantee</span>
     <span class="text-cream/30">◆</span>
     <span class="flex items-center gap-2"><i class="ph-fill ph-clock text-rose"></i> Order by 3pm for next-day delivery</span>
+    <span class="text-cream/30">◆</span>
+    <span class="flex items-center gap-2"><i class="ph-fill ph-leaf text-rose"></i> 100% Natural · Made in Dubai</span>
   </div>
 </div>
 
@@ -152,62 +179,68 @@
   </nav>
 </header>
 
-<!-- ============================ BUY ENGINE (mobile-first) ============================ -->
+<!-- ============================ BUY ENGINE ============================ -->
 <section id="shop" class="bg-cream pt-3 pb-6 lg:pb-12">
   <div class="max-w-[1400px] mx-auto lg:grid lg:grid-cols-12 lg:gap-10 lg:px-8">
 
-    <!-- LEFT: hero + carousel (lg cols 1-7) -->
+    <!-- LEFT: hero + carousel -->
     <div class="lg:col-span-7">
 
-      <!-- Flavor selector — horizontal scroll on mobile -->
+      <!-- Title + rating -->
       <div class="px-4 sm:px-6 lg:px-0 mb-3 lg:mb-4">
-        <div class="flex items-end justify-between mb-2">
-          <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight">Natural <em class="text-forest/85">Fresh Mint</em></h1>
-          <div class="flex items-center gap-1 text-[11px] text-forest/65">
-            <span class="text-rose tracking-wider"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></span>
-            <span class="font-medium text-forest">4.9</span>
-            <a href="#reviews" class="underline underline-offset-2 hover:text-forest">300+</a>
+        <div class="flex items-end justify-between mb-2 gap-2">
+          <div class="min-w-0">
+            <p class="text-[10px] uppercase tracking-widest text-rose font-semibold mb-1 flex items-center gap-1.5">
+              <i class="ph-fill ph-sparkle"></i> 100% Natural · Dentist-Made
+            </p>
+            <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight">Natural <em class="text-forest/85">Fresh Mint</em></h1>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-rose text-sm tracking-wider"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+            <a href="#reviews" class="text-[10px] text-forest/55 hover:text-forest underline underline-offset-2"><span class="font-bold text-forest">4.9</span> · 312 reviews</a>
           </div>
         </div>
 
-        <!-- Flavor pills — horizontal scrollable -->
-        <div class="flex gap-2.5 overflow-x-auto no-scrollbar -mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0 pb-1">
-          <button class="flavor-pill snap-item active flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-mint p-2 border border-transparent">
-            <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-mint-deep flex items-center justify-center overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="Mint" class="w-full h-full object-contain p-0.5" />
-            </div>
-            <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Mint</span>
-          </button>
-          <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
-            <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg" alt="Vanilla" class="w-full h-full object-contain p-0.5" />
-            </div>
-            <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Vanilla</span>
-          </a>
-          <a href="https://rozebiohealth.com/shop/watermelon-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-rose/15 p-2 border border-line">
-            <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-rose/25 flex items-center justify-center overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg" alt="Watermelon" class="w-full h-full object-contain p-0.5" />
-            </div>
-            <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Melon</span>
-          </a>
-          <a href="https://rozebiohealth.com/shop/dental-kit-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
-            <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2025/05/RAH08378-400x400.jpg" alt="Dental Kit" class="w-full h-full object-contain p-0.5" />
-            </div>
-            <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Kit</span>
-          </a>
-          <a href="https://rozebiohealth.com/shop/bamboo-toothbrush-soft-junior/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
-            <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Brush" class="w-full h-full object-contain p-0.5" />
-            </div>
-            <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Brush</span>
-          </a>
-          <a href="https://rozebiohealth.com/shop/dental-bundles/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-forest text-cream p-2 border border-transparent">
-            <div class="w-12 h-12 rounded-xl bg-moss flex items-center justify-center">
-              <span class="font-serif text-base">+3</span>
-            </div>
-            <span class="text-[9px] font-semibold uppercase tracking-wider">More</span>
-          </a>
+        <!-- Flavor pills -->
+        <div class="h-scroll-wrap -mx-4 sm:-mx-6 lg:mx-0">
+          <div class="flex gap-2.5 overflow-x-auto no-scrollbar px-4 sm:px-6 lg:px-0 pb-1">
+            <button class="flavor-pill snap-item active flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-mint p-2 border border-transparent">
+              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-mint-deep flex items-center justify-center overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="Mint" class="w-full h-full object-contain p-0.5" />
+              </div>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Mint</span>
+            </button>
+            <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
+              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg" alt="Vanilla" class="w-full h-full object-contain p-0.5" />
+              </div>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Vanilla</span>
+            </a>
+            <a href="https://rozebiohealth.com/shop/watermelon-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-rose/15 p-2 border border-line">
+              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-rose/25 flex items-center justify-center overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg" alt="Watermelon" class="w-full h-full object-contain p-0.5" />
+              </div>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Melon</span>
+            </a>
+            <a href="https://rozebiohealth.com/shop/dental-kit-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
+              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2025/05/RAH08378-400x400.jpg" alt="Dental Kit" class="w-full h-full object-contain p-0.5" />
+              </div>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Kit</span>
+            </a>
+            <a href="https://rozebiohealth.com/shop/bamboo-toothbrush-soft-junior/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
+              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Brush" class="w-full h-full object-contain p-0.5" />
+              </div>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Brush</span>
+            </a>
+            <a href="https://rozebiohealth.com/shop/dental-bundles/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-forest text-cream p-2 border border-transparent">
+              <div class="w-12 h-12 rounded-xl bg-moss flex items-center justify-center">
+                <span class="font-serif text-base">+3</span>
+              </div>
+              <span class="text-[9px] font-semibold uppercase tracking-wider">More</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -217,21 +250,28 @@
              alt="Roze Natural Fresh Mint Toothpaste — 15% Hydroxyapatite"
              class="w-full h-full object-contain p-6 sm:p-10 lg:p-14" />
 
-        <!-- "15%" badge -->
-        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center justify-center">
-          <div class="bg-forest text-cream w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-serif transform -rotate-6 shadow-lg">
-            <span class="text-2xl sm:text-3xl font-bold leading-none">15%</span>
-            <span class="text-[8px] uppercase tracking-widest mt-0.5">Hydroxyapatite</span>
+        <!-- LARGER, more prominent 15% badge -->
+        <div class="absolute top-4 left-4 sm:top-6 sm:left-6">
+          <div class="bg-forest text-cream w-28 h-28 sm:w-32 sm:h-32 rounded-full flex flex-col items-center justify-center font-serif transform -rotate-6 shadow-xl">
+            <span class="text-[10px] uppercase tracking-widest opacity-70 leading-none">Clinical</span>
+            <span class="text-4xl sm:text-5xl font-bold leading-none my-1">15%</span>
+            <span class="text-[9px] uppercase tracking-widest leading-none">Hydroxyapatite</span>
           </div>
         </div>
 
         <!-- Bestseller pill -->
         <span class="absolute top-5 right-5 sm:top-6 sm:right-6 bg-rose text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-full">Bestseller</span>
+
+        <!-- Urgency micro-line at bottom of hero -->
+        <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 bg-cream/85 backdrop-blur-md rounded-full px-4 py-2 text-[10px] font-medium">
+          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-success pulse"></span> <span class="text-forest">12 sold in the last hour</span></span>
+          <span class="text-forest/55">Only 47 left at this price</span>
+        </div>
       </div>
 
-      <!-- Image carousel — horizontal scroll -->
-      <div class="px-4 sm:px-6 lg:px-0 mt-3 relative">
-        <div class="flex gap-3 overflow-x-auto no-scrollbar -mx-4 sm:-mx-6 lg:mx-0 px-4 sm:px-6 lg:px-0 pb-1">
+      <!-- Image carousel -->
+      <div class="h-scroll-wrap mt-3 -mx-4 sm:-mx-6 lg:mx-0">
+        <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 sm:px-6 lg:px-0 pb-1">
           <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 border-forest gallery-thumb active" data-img="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg">
             <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="Front" class="w-full h-full object-contain" />
           </button>
@@ -264,92 +304,186 @@
       </div>
     </div>
 
-    <!-- RIGHT: buy controls (lg cols 8-12) — same vertical position on mobile, sticky on desktop -->
+    <!-- RIGHT: buy controls -->
     <div class="lg:col-span-5 mt-6 lg:mt-0 px-4 sm:px-6 lg:px-0">
 
-      <!-- Trust micro-line above price -->
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-forest/65 uppercase tracking-widest mb-3">
-        <span class="flex items-center gap-1"><i class="ph-fill ph-leaf text-rose"></i> 100% Natural</span>
-        <span class="text-forest/25">·</span>
-        <span class="flex items-center gap-1"><i class="ph-fill ph-x-circle text-rose"></i> Fluoride-Free</span>
-        <span class="text-forest/25">·</span>
-        <span class="flex items-center gap-1"><i class="ph-fill ph-medal text-rose"></i> Dentist-Made</span>
-      </div>
-
-      <!-- Description: short, punchy -->
+      <!-- Description -->
       <p class="text-base text-forest/80 leading-relaxed mb-5 font-light">
         Clinically formulated with <strong class="text-forest font-medium">15% Hydroxyapatite</strong> — the enamel-rebuilding mineral trusted in Japanese dentistry for 40+ years. Fluoride-free. Food-grade. Safe for the whole family.
       </p>
 
       <!-- Buy Once / Subscribe toggle -->
-      <div class="bg-paper rounded-full p-1.5 inline-flex gap-1.5 mb-3 self-start text-forest">
-        <label>
-          <input type="radio" name="purchase-type" value="once" checked />
-          <span class="toggle-pill block px-5 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wider cursor-pointer">Buy Once</span>
-        </label>
-        <label>
-          <input type="radio" name="purchase-type" value="sub" />
-          <span class="toggle-pill block px-5 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wider cursor-pointer flex items-center gap-1.5">
-            Subscribe
-            <span class="text-[9px] bg-rose text-white px-1.5 py-0.5 rounded normal-case tracking-normal">−20%</span>
-          </span>
-        </label>
-      </div>
+      <div class="mb-4">
+        <div class="bg-paper rounded-full p-1.5 inline-flex gap-1.5 text-forest mb-3">
+          <label>
+            <input type="radio" name="purchase-type" value="once" checked />
+            <span class="toggle-pill block px-5 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wider cursor-pointer">Buy Once</span>
+          </label>
+          <label>
+            <input type="radio" name="purchase-type" value="sub" />
+            <span class="toggle-pill block px-5 py-2 rounded-full text-[11px] font-semibold uppercase tracking-wider cursor-pointer flex items-center gap-1.5">
+              Subscribe
+              <span class="text-[9px] bg-rose text-white px-1.5 py-0.5 rounded normal-case tracking-normal">−20%</span>
+            </span>
+          </label>
+        </div>
 
-      <!-- Pack options -->
-      <div class="grid grid-cols-3 gap-2 mb-5">
-        <label class="pack-card cursor-pointer rounded-2xl border-2 border-line bg-paper p-3 relative" data-pack="1" data-price-once="82" data-price-sub="65.60">
-          <input type="radio" name="pack" value="1" />
-          <div class="text-[10px] font-semibold uppercase tracking-widest text-forest/55 mb-1">Single</div>
-          <div class="font-serif text-lg font-semibold text-forest leading-none mb-1">1×</div>
-          <div class="text-[10px] text-forest/45 line-through">82</div>
-          <div class="text-sm font-bold text-forest">AED 65.60</div>
-        </label>
-        <label class="pack-card cursor-pointer rounded-2xl border-2 border-line bg-paper p-3 relative" data-pack="3" data-price-once="248" data-price-sub="198.40">
-          <input type="radio" name="pack" value="3" />
-          <div class="text-[10px] font-semibold uppercase tracking-widest text-forest/55 mb-1">3-Pack</div>
-          <div class="font-serif text-lg font-semibold text-forest leading-none mb-1">3×</div>
-          <div class="text-[10px] text-forest/45 line-through">248</div>
-          <div class="text-sm font-bold text-forest">AED 198.40</div>
-        </label>
-        <label class="pack-card cursor-pointer rounded-2xl border-2 border-rose bg-paper p-3 relative selected" data-pack="4plus2" data-price-once="328" data-price-sub="262.40">
-          <input type="radio" name="pack" value="4plus2" checked />
-          <span class="pack-badge absolute -top-2.5 left-1/2 -translate-x-1/2 bg-rose text-white text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full whitespace-nowrap">Best Value</span>
-          <div class="text-[10px] font-semibold uppercase tracking-widest text-rose-dark mb-1">4+2 Free</div>
-          <div class="font-serif text-lg font-semibold text-forest leading-none mb-1">6×</div>
-          <div class="text-[10px] text-forest/45 line-through">492</div>
-          <div class="text-sm font-bold text-forest">AED 262.40</div>
-        </label>
-      </div>
-
-      <!-- Price + qty + ATC (the buy engine) -->
-      <div class="bg-paper rounded-2xl p-4 mb-4">
-        <div class="flex items-end justify-between mb-3">
-          <div>
-            <div class="text-[10px] uppercase tracking-widest text-forest/55 mb-1">Today's Price</div>
-            <div class="flex items-baseline gap-2">
-              <div class="font-serif text-4xl sm:text-5xl font-bold text-rose-dark leading-none" id="total-price">AED 262.40</div>
-              <div class="text-sm text-forest/45 line-through">492</div>
+        <!-- Subscribe benefits panel — reveals when Subscribe is toggled -->
+        <div class="sub-benefits" id="sub-benefits">
+          <div class="bg-forest text-cream rounded-2xl p-4 sm:p-5 my-3 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-rose opacity-15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-[10px] uppercase tracking-widest text-rose font-bold">Subscriber Perks</p>
+                <p class="text-[10px] text-cream/55 uppercase tracking-wider">Save AED 197/year</p>
+              </div>
+              <ul class="space-y-2 text-xs sm:text-sm">
+                <li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-rose text-lg leading-none flex-shrink-0 mt-0.5"></i><span><strong>20% off</strong> every recurring order</span></li>
+                <li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-rose text-lg leading-none flex-shrink-0 mt-0.5"></i><span><strong>Free shipping</strong> on every order — no minimum</span></li>
+                <li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-rose text-lg leading-none flex-shrink-0 mt-0.5"></i><span><strong>Free bamboo brush</strong> every 6 months</span></li>
+                <li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-rose text-lg leading-none flex-shrink-0 mt-0.5"></i><span><strong>Skip, pause or cancel</strong> anytime, no fees</span></li>
+              </ul>
             </div>
-            <div class="text-[11px] text-rose-dark font-bold mt-1 uppercase tracking-widest">You save AED 229.60 (46%)</div>
           </div>
-          <!-- Quantity stepper -->
-          <div class="flex items-center bg-cream rounded-full border border-line">
-            <button class="qty-btn w-8 h-9 rounded-full text-base font-bold" data-qty="-1">−</button>
+        </div>
+      </div>
+
+      <!-- Pack options (with savings ladder) -->
+      <div class="mb-2">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold">Choose Your Bundle</p>
+          <p class="text-[10px] uppercase tracking-widest text-success font-bold">More = bigger savings</p>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <label class="pack-card cursor-pointer rounded-2xl border-2 border-line bg-paper p-2.5 relative" data-pack="1" data-price-once="82" data-price-sub="65.60" data-units="1" data-list="82">
+            <input type="radio" name="pack" value="1" />
+            <div class="text-[9px] font-bold uppercase tracking-widest text-forest/55 leading-tight">Single</div>
+            <div class="font-serif text-base font-bold text-forest leading-tight mt-0.5">1×</div>
+            <div class="text-[10px] text-forest/45 line-through leading-tight mt-1">82</div>
+            <div class="text-xs font-bold text-forest leading-tight">AED 82</div>
+          </label>
+          <label class="pack-card cursor-pointer rounded-2xl border-2 border-line bg-paper p-2.5 relative" data-pack="3" data-price-once="248" data-price-sub="198.40" data-units="3" data-list="246">
+            <input type="radio" name="pack" value="3" />
+            <div class="text-[9px] font-bold uppercase tracking-widest text-forest/55 leading-tight">3-Pack</div>
+            <div class="font-serif text-base font-bold text-forest leading-tight mt-0.5">3×</div>
+            <div class="text-[10px] text-forest/45 line-through leading-tight mt-1">246</div>
+            <div class="text-xs font-bold text-forest leading-tight">AED 248</div>
+          </label>
+          <label class="pack-card cursor-pointer rounded-2xl border-2 border-rose bg-paper p-2.5 relative selected" data-pack="4plus2" data-price-once="328" data-price-sub="262.40" data-units="6" data-list="492">
+            <input type="radio" name="pack" value="4plus2" checked />
+            <span class="pack-badge dynamic absolute -top-2 left-1/2 -translate-x-1/2 bg-rose text-white text-[8px] uppercase tracking-widest font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap">Most Popular</span>
+            <div class="text-[9px] font-bold uppercase tracking-widest text-rose-dark leading-tight">4+2 Free</div>
+            <div class="font-serif text-base font-bold text-forest leading-tight mt-0.5">6×</div>
+            <div class="text-[10px] text-forest/45 line-through leading-tight mt-1">492</div>
+            <div class="text-xs font-bold text-forest leading-tight">AED 328</div>
+          </label>
+          <label class="pack-card cursor-pointer rounded-2xl border-2 border-line bg-paper p-2.5 relative" data-pack="variety" data-price-once="246" data-price-sub="196.80" data-units="3" data-list="246">
+            <input type="radio" name="pack" value="variety" />
+            <span class="pack-badge dynamic absolute -top-2 left-1/2 -translate-x-1/2 bg-forest text-cream text-[8px] uppercase tracking-widest font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap">Variety</span>
+            <div class="text-[9px] font-bold uppercase tracking-widest text-forest/55 leading-tight">Family</div>
+            <div class="font-serif text-base font-bold text-forest leading-tight mt-0.5">3×</div>
+            <div class="text-[10px] text-forest/45 leading-tight mt-1">Mint+Van+Mel</div>
+            <div class="text-xs font-bold text-forest leading-tight">AED 246</div>
+          </label>
+        </div>
+
+        <!-- Savings ladder -->
+        <div class="mt-3 bg-cream-alt rounded-xl p-3">
+          <div class="flex items-center justify-between gap-2 text-[9px] uppercase tracking-widest text-forest/55 font-semibold mb-1.5">
+            <span>Bundle savings</span>
+            <span id="ladder-pct" class="text-success font-bold">Currently: 46% off</span>
+          </div>
+          <div class="grid grid-cols-4 gap-1 text-center text-[9px] font-medium">
+            <div class="bg-cream-soft py-1.5 rounded">1× <span class="text-forest/45">·</span> 0%</div>
+            <div class="bg-cream-soft py-1.5 rounded">3× <span class="text-forest/45">·</span> ~0%</div>
+            <div class="bg-success text-cream py-1.5 rounded font-bold">6× · 46%</div>
+            <div class="bg-cream-soft py-1.5 rounded">Var · 0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Combination + delivery (only show when 4+2 or Variety) -->
+      <div class="space-y-3 mt-4 mb-4">
+        <div>
+          <label class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold mb-1.5 block">Combination</label>
+          <select class="w-full bg-paper border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-forest font-medium">
+            <option>4× Fresh Mint + 2× Free Fresh Mint</option>
+            <option>4× Fresh Mint + 2× Free Vanilla</option>
+            <option>3× Fresh Mint + 3× Free Vanilla</option>
+            <option>2× Fresh Mint + 2× Vanilla + 2× Watermelon</option>
+          </select>
+        </div>
+        <div id="delivery-freq-wrap" class="hidden">
+          <label class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold mb-1.5 block">Deliver every</label>
+          <select class="w-full bg-paper border border-line rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-forest font-medium">
+            <option>1 month (most popular)</option>
+            <option>2 months</option>
+            <option>3 months</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bundle add-on / cross-sell above ATC -->
+      <div class="mb-4">
+        <p class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold mb-2">Add to your routine</p>
+        <label class="block relative cursor-pointer">
+          <input type="checkbox" name="addon" />
+          <div class="addon-card bg-paper border-2 border-line rounded-2xl p-3 flex items-center gap-3">
+            <div class="w-14 h-14 rounded-xl bg-cream-alt flex-shrink-0 overflow-hidden">
+              <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Bamboo Toothbrush" class="w-full h-full object-contain p-1" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-semibold text-forest leading-tight">Bamboo Toothbrush</div>
+              <div class="text-[11px] text-forest/55 leading-tight mt-0.5">100% biodegradable · The perfect partner</div>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span class="text-sm font-bold text-success">AED 24</span>
+                <span class="text-[11px] text-forest/45 line-through">29</span>
+                <span class="text-[9px] bg-success text-cream px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Save AED 5</span>
+              </div>
+            </div>
+            <div class="addon-check w-6 h-6 rounded-md border-2 border-line flex items-center justify-center flex-shrink-0"></div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Free shipping progress -->
+      <div class="mb-4 bg-cream-soft rounded-2xl p-3">
+        <div class="flex items-center justify-between mb-1.5">
+          <p class="text-[10px] uppercase tracking-widest text-forest/65 font-semibold flex items-center gap-1.5"><i class="ph-fill ph-truck text-success"></i> Free Shipping Progress</p>
+          <p class="text-[10px] text-success font-bold uppercase tracking-widest" id="ship-status">You qualify! ✓</p>
+        </div>
+        <div class="h-1.5 bg-cream rounded-full overflow-hidden">
+          <div class="progress-bar h-full" id="ship-progress" style="width: 100%;"></div>
+        </div>
+        <p class="text-[10px] text-forest/55 mt-1.5" id="ship-msg">Free UAE delivery over AED 300 · You're set.</p>
+      </div>
+
+      <!-- Price + qty + ATC -->
+      <div class="bg-paper rounded-2xl p-4 mb-4">
+        <div class="flex items-end justify-between mb-3 gap-3">
+          <div class="min-w-0">
+            <div class="text-[10px] uppercase tracking-widest text-forest/55 mb-1">Total Today</div>
+            <div class="flex items-baseline gap-2 flex-wrap">
+              <div class="font-serif text-4xl sm:text-5xl font-bold text-rose-dark leading-none" id="total-price">AED 328</div>
+              <div class="text-sm text-forest/45 line-through" id="total-list">492</div>
+            </div>
+            <div class="text-[11px] text-success font-bold mt-1 uppercase tracking-widest" id="total-saved">You save AED 164 (33%)</div>
+          </div>
+          <div class="flex items-center bg-cream rounded-full border border-line flex-shrink-0">
+            <button class="qty-btn w-9 h-10 rounded-l-full text-base font-bold" data-qty="-1">−</button>
             <span class="qty-display w-7 text-center text-sm font-semibold">1</span>
-            <button class="qty-btn w-8 h-9 rounded-full text-base font-bold" data-qty="1">+</button>
+            <button class="qty-btn w-9 h-10 rounded-r-full text-base font-bold" data-qty="1">+</button>
           </div>
         </div>
 
         <button class="btn-primary w-full bg-forest text-cream py-4 rounded-full font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg">
           <i class="ph-fill ph-shopping-bag"></i>
-          Add to Cart
+          Add to Cart — <span id="cta-price">AED 328</span>
         </button>
 
-        <!-- Payment + delivery -->
         <div class="mt-3 flex items-center justify-between text-[10px] uppercase tracking-widest text-forest/55">
           <div class="flex items-center gap-1.5">
-            <i class="ph-fill ph-shield-check text-rose"></i>
+            <i class="ph-fill ph-shield-check text-success"></i>
             <span>Secure Checkout</span>
           </div>
           <div class="flex items-center gap-1">
@@ -391,7 +525,7 @@
         </div>
       </div>
 
-      <!-- Accordions: info BELOW the buy decision -->
+      <!-- Accordions -->
       <div class="mt-6 space-y-1">
         <details class="border-t border-line py-4 group">
           <summary class="flex items-center justify-between font-semibold text-xs uppercase tracking-widest">
@@ -461,7 +595,7 @@
   </div>
 </section>
 
-<!-- ============================ AFTER 2 MIN OF BRUSHING (dark) ============================ -->
+<!-- ============================ AFTER 2 MIN ============================ -->
 <section class="bg-forest text-cream py-16 sm:py-24">
   <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
     <div class="text-center mb-12 reveal">
@@ -504,7 +638,7 @@
   </div>
 </section>
 
-<!-- ============================ THE 15% (massive numeral) ============================ -->
+<!-- ============================ 15% SCIENCE ============================ -->
 <section id="science" class="py-20 sm:py-28">
   <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
@@ -554,7 +688,7 @@
   </div>
 </section>
 
-<!-- ============================ WHAT IS NOT IN IT ============================ -->
+<!-- ============================ NOT IN IT ============================ -->
 <section class="py-20 sm:py-28 bg-cream-alt">
   <div class="max-w-[1400px] mx-auto px-5 sm:px-8 relative">
     <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
@@ -615,7 +749,7 @@
   </div>
 </section>
 
-<!-- ============================ DR. ROZE FOUNDER ============================ -->
+<!-- ============================ DR ROZE ============================ -->
 <section id="founder" class="py-20 sm:py-28">
   <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -675,44 +809,57 @@
     <div class="text-center mb-12 reveal">
       <p class="text-[10px] tracking-widest uppercase text-rose font-semibold mb-2">Reviews</p>
       <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05]">They Can't Stop <em class="text-rose">Smiling</em></h2>
-      <div class="flex items-center justify-center gap-2 mt-4">
+      <div class="flex items-center justify-center gap-2 mt-4 flex-wrap">
         <span class="text-lg text-rose tracking-wider"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></span>
         <span class="font-semibold text-forest text-sm">4.9/5</span>
-        <span class="text-xs text-forest/55">— 300+ verified reviews</span>
+        <span class="text-xs text-forest/55">— 312 verified reviews</span>
+        <span class="bg-success/10 text-success text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">98% would recommend</span>
       </div>
     </div>
 
     <div class="grid sm:grid-cols-3 gap-4 sm:gap-5 reveal delay-100">
       <div class="bg-cream rounded-2xl p-5 sm:p-7">
-        <div class="text-rose text-sm mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"A game changer. The gentle spa-like sensation makes brushing actually enjoyable — without harmful chemicals."</p>
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-rose text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <span class="text-[9px] bg-success/10 text-success font-bold px-2 py-0.5 rounded uppercase tracking-widest">Verified</span>
+        </div>
+        <h4 class="font-serif text-base mb-2">A game changer for my routine</h4>
+        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"The gentle spa-like sensation makes brushing actually enjoyable — without harmful chemicals. I'll never go back."</p>
         <div class="flex items-center gap-2 pt-3 border-t border-line">
           <div class="w-8 h-8 rounded-full bg-cream-alt flex items-center justify-center font-bold text-forest text-[10px]">SA</div>
           <div>
             <div class="font-medium text-xs">Sara A.</div>
-            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Dubai · Verified · 4+2 Free</div>
+            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Dubai · Bought: 4+2 Free Mint</div>
           </div>
         </div>
       </div>
       <div class="bg-cream rounded-2xl p-5 sm:p-7">
-        <div class="text-rose text-sm mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"Best toothpaste I've used. My teeth feel incredibly smooth afterwards. Recommending it to my patients."</p>
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-rose text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <span class="text-[9px] bg-success/10 text-success font-bold px-2 py-0.5 rounded uppercase tracking-widest">Verified</span>
+        </div>
+        <h4 class="font-serif text-base mb-2">Recommending to all my patients</h4>
+        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"Best toothpaste I've used. My teeth feel incredibly smooth afterwards. I've put my whole family on it."</p>
         <div class="flex items-center gap-2 pt-3 border-t border-line">
           <div class="w-8 h-8 rounded-full bg-rose flex items-center justify-center font-bold text-white text-[10px]">LM</div>
           <div>
             <div class="font-medium text-xs">Dr. Laura M.</div>
-            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Dentist · Verified buyer</div>
+            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Dentist · Bought: 3-Pack Mint</div>
           </div>
         </div>
       </div>
       <div class="bg-cream rounded-2xl p-5 sm:p-7">
-        <div class="text-rose text-sm mb-3"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"The only non-toxic, edible toothpaste with clinical-grade hydroxyapatite. Subscribed for life."</p>
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-rose text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <span class="text-[9px] bg-success/10 text-success font-bold px-2 py-0.5 rounded uppercase tracking-widest">Subscriber</span>
+        </div>
+        <h4 class="font-serif text-base mb-2">Subscribed for life</h4>
+        <p class="text-forest/80 leading-relaxed text-sm mb-4 font-light">"The only non-toxic, edible toothpaste with clinical-grade HA. Subscription saves me a fortune."</p>
         <div class="flex items-center gap-2 pt-3 border-t border-line">
           <div class="w-8 h-8 rounded-full bg-forest flex items-center justify-center font-bold text-cream text-[10px]">MD</div>
           <div>
             <div class="font-medium text-xs">Dr. Mateen D.</div>
-            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Periodontist · Verified</div>
+            <div class="text-[9px] text-forest/55 uppercase tracking-widest">Periodontist · Subscribed</div>
           </div>
         </div>
       </div>
@@ -720,7 +867,7 @@
 
     <div class="text-center mt-8">
       <a href="#" class="inline-flex items-center gap-2 border border-forest/25 px-6 py-3 rounded-full text-[11px] font-semibold uppercase tracking-widest hover:bg-forest hover:text-cream transition">
-        Read all 300+ reviews
+        Read all 312 reviews
         <i class="ph-bold ph-arrow-right"></i>
       </a>
       <p class="text-[9px] uppercase tracking-widest text-forest/40 mt-4 italic">Placeholder reviews — replace with real Trustpilot/Google before launch.</p>
@@ -742,7 +889,7 @@
           <span>Is ROZE safe for children?</span>
           <span class="plus text-xl text-rose transition-transform font-light">+</span>
         </summary>
-        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Yes. ROZE is specifically formulated to be safe if swallowed — food-grade ingredients only, no fluoride toxicity risk. Many customers introduce it to children as young as 18 months.</p>
+        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Yes. Formulated to be safe if swallowed — food-grade ingredients only, no fluoride toxicity risk. Many customers introduce it to children as young as 18 months.</p>
       </details>
       <details class="bg-paper rounded-xl border border-line p-5">
         <summary class="flex items-center justify-between font-medium font-serif text-base sm:text-lg">
@@ -750,6 +897,13 @@
           <span class="plus text-xl text-rose transition-transform font-light">+</span>
         </summary>
         <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Reduced sensitivity within 14 days. Visible whitening typically between weeks 3 and 6. Enamel remineralization is continuous — the longer you use it, the stronger your teeth become.</p>
+      </details>
+      <details class="bg-paper rounded-xl border border-line p-5">
+        <summary class="flex items-center justify-between font-medium font-serif text-base sm:text-lg">
+          <span>How does the subscription work?</span>
+          <span class="plus text-xl text-rose transition-transform font-light">+</span>
+        </summary>
+        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Subscribe to get 20% off every order, free shipping, a free bamboo brush every 6 months, and skip/pause/cancel anytime — zero fees. Most customers choose monthly delivery.</p>
       </details>
       <details class="bg-paper rounded-xl border border-line p-5">
         <summary class="flex items-center justify-between font-medium font-serif text-base sm:text-lg">
@@ -763,7 +917,7 @@
           <span>Does it actually replace fluoride?</span>
           <span class="plus text-xl text-rose transition-transform font-light">+</span>
         </summary>
-        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Yes — and arguably better. Fluoride creates a thin coating. Hydroxyapatite IS the mineral your enamel is made of, so it doesn't just coat — it rebuilds. Japan has used HA as its national standard since 1980.</p>
+        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Yes — and arguably better. Hydroxyapatite IS the mineral your enamel is made of, so it doesn't just coat — it rebuilds. Japan has used HA as its national standard since 1980.</p>
       </details>
       <details class="bg-paper rounded-xl border border-line p-5">
         <summary class="flex items-center justify-between font-medium font-serif text-base sm:text-lg">
@@ -784,7 +938,7 @@
           <span>How fast is UAE delivery?</span>
           <span class="plus text-xl text-rose transition-transform font-light">+</span>
         </summary>
-        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Next-day delivery across the UAE for orders placed by 3pm. Free over AED 300.</p>
+        <p class="mt-3 text-forest/70 leading-relaxed text-sm font-light">Next-day delivery across the UAE for orders placed by 3pm. Free over AED 300, or always free with subscribe.</p>
       </details>
     </div>
   </div>
@@ -806,7 +960,7 @@
         <div class="aspect-square bg-ivory p-5"><img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg" alt="Vanilla" class="w-full h-full object-contain" /></div>
         <div class="p-3 sm:p-4">
           <div class="font-serif text-base text-forest mb-1">Vanilla</div>
-          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">15% HA</div>
+          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">15% HA · Madagascar Vanilla</div>
           <div class="flex items-center justify-between">
             <div class="text-sm font-bold text-forest">AED 82</div>
             <span class="text-[9px] uppercase tracking-widest bg-forest text-cream px-3 py-1.5 rounded-full font-semibold">Add</span>
@@ -820,7 +974,7 @@
         </div>
         <div class="p-3 sm:p-4">
           <div class="font-serif text-base text-forest mb-1">Watermelon</div>
-          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">15% HA</div>
+          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">Kid-friendly · 15% HA</div>
           <div class="flex items-center justify-between">
             <div class="text-sm font-bold text-forest">AED 82</div>
             <span class="text-[9px] uppercase tracking-widest bg-forest text-cream px-3 py-1.5 rounded-full font-semibold">Add</span>
@@ -834,7 +988,7 @@
         </div>
         <div class="p-3 sm:p-4">
           <div class="font-serif text-base text-forest mb-1">Dental Kit</div>
-          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">Paste + Brush</div>
+          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">Paste + Brush · Save 18%</div>
           <div class="flex items-center justify-between">
             <div class="text-sm font-bold text-forest">AED 55</div>
             <span class="text-[9px] uppercase tracking-widest bg-forest text-cream px-3 py-1.5 rounded-full font-semibold">View</span>
@@ -842,17 +996,18 @@
         </div>
       </a>
       <a href="https://rozebiohealth.com/shop/dental-bundles/" class="bg-cream rounded-2xl overflow-hidden group transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
-        <div class="aspect-square bg-ivory p-5 flex items-center justify-center">
+        <div class="aspect-square bg-mint p-5 flex items-center justify-center relative">
+          <span class="absolute top-2.5 left-2.5 bg-success text-cream text-[8px] uppercase tracking-widest font-bold px-2 py-0.5 rounded">Save 30%</span>
           <div class="text-center">
-            <i class="ph-thin ph-package text-rose text-5xl mb-2 block"></i>
-            <div class="font-serif text-lg text-forest">Family</div>
+            <i class="ph-thin ph-package text-forest text-5xl mb-2 block"></i>
+            <div class="font-serif text-lg text-forest">Family Bundle</div>
           </div>
         </div>
         <div class="p-3 sm:p-4">
-          <div class="font-serif text-base text-forest mb-1">Bundles</div>
-          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">Save 30%</div>
+          <div class="font-serif text-base text-forest mb-1">Family Bundles</div>
+          <div class="text-[9px] text-forest/55 uppercase tracking-widest mb-2">Multi-tube · Best value</div>
           <div class="flex items-center justify-between">
-            <div class="text-sm font-bold text-forest">AED 165+</div>
+            <div class="text-sm font-bold text-forest">From AED 165</div>
             <span class="text-[9px] uppercase tracking-widest bg-forest text-cream px-3 py-1.5 rounded-full font-semibold">Explore</span>
           </div>
         </div>
@@ -861,7 +1016,7 @@
   </div>
 </section>
 
-<!-- ============================ FINAL CTA + email ============================ -->
+<!-- ============================ FINAL CTA + email + footer ============================ -->
 <section class="bg-forest text-cream rounded-t-[3rem] py-20 sm:py-28 px-5 sm:px-8 relative overflow-hidden">
   <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-rose opacity-10 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
@@ -890,7 +1045,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <div class="max-w-[1400px] mx-auto mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 relative z-10 text-cream/65 text-xs">
     <div class="col-span-2 sm:col-span-1">
       <div class="font-serif text-xl tracking-[0.25em] text-cream">ROZE</div>
@@ -933,15 +1087,15 @@
   </div>
 </section>
 
-<!-- ============================ STICKY BOTTOM BUY BAR (mobile/tablet) ============================ -->
+<!-- ============================ STICKY BOTTOM BUY BAR ============================ -->
 <div class="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-cream/95 backdrop-blur-md border-t border-line shadow-lg">
   <div class="max-w-[1400px] mx-auto px-3 py-2.5 flex items-center gap-2.5">
     <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="" class="w-11 h-11 object-contain bg-paper rounded-lg flex-shrink-0" />
     <div class="flex-1 min-w-0">
-      <div class="text-xs font-medium text-forest truncate font-serif leading-tight">Fresh Mint · 4+2 Free</div>
+      <div class="text-xs font-medium text-forest truncate font-serif leading-tight" id="sticky-name">Fresh Mint · 4+2 Free</div>
       <div class="text-[10px] text-forest/55 leading-tight mt-0.5">
-        <span class="font-bold text-rose-dark">AED 262.40</span>
-        <span class="line-through text-forest/40 ml-1">492</span>
+        <span class="font-bold text-rose-dark" id="sticky-price">AED 328</span>
+        <span class="line-through text-forest/40 ml-1" id="sticky-list">492</span>
       </div>
     </div>
     <a href="#shop" class="bg-forest text-cream px-5 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest whitespace-nowrap btn-primary">Add to Cart</a>
@@ -956,37 +1110,111 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Pack selector
-    const packs = document.querySelectorAll('.pack-card');
-    const totalEl = document.getElementById('total-price');
+    // State
     let purchaseType = 'once';
     let qty = 1;
-    function updateTotal() {
-      const selected = document.querySelector('.pack-card.selected');
-      if (!selected) return;
-      const basePrice = parseFloat(purchaseType === 'sub' ? selected.dataset.priceSub : selected.dataset.priceOnce);
-      const total = (basePrice * qty).toFixed(2);
-      totalEl.textContent = `AED ${total}`;
+    let addonChecked = false;
+    const ADDON_PRICE = 24;
+    const FREE_SHIP_AT = 300;
+
+    const totalEl = document.getElementById('total-price');
+    const listEl = document.getElementById('total-list');
+    const savedEl = document.getElementById('total-saved');
+    const ctaPriceEl = document.getElementById('cta-price');
+    const ladderPctEl = document.getElementById('ladder-pct');
+    const subBenefits = document.getElementById('sub-benefits');
+    const stickyPrice = document.getElementById('sticky-price');
+    const stickyList = document.getElementById('sticky-list');
+    const stickyName = document.getElementById('sticky-name');
+    const shipBar = document.getElementById('ship-progress');
+    const shipStatus = document.getElementById('ship-status');
+    const shipMsg = document.getElementById('ship-msg');
+    const deliveryFreq = document.getElementById('delivery-freq-wrap');
+
+    function getSelectedPack() { return document.querySelector('.pack-card.selected'); }
+
+    function updateAll() {
+      const sel = getSelectedPack();
+      if (!sel) return;
+      const basePrice = parseFloat(purchaseType === 'sub' ? sel.dataset.priceSub : sel.dataset.priceOnce);
+      const listPrice = parseFloat(sel.dataset.list);
+      let total = basePrice * qty;
+      let list = listPrice * qty;
+      if (addonChecked) { total += ADDON_PRICE; list += 29; }
+      const saved = list - total;
+      const pct = list > 0 ? Math.round((saved / list) * 100) : 0;
+
+      totalEl.textContent = `AED ${total.toFixed(total % 1 ? 2 : 0)}`;
+      listEl.textContent = list.toFixed(list % 1 ? 2 : 0);
+      ctaPriceEl.textContent = `AED ${total.toFixed(total % 1 ? 2 : 0)}`;
+      if (saved > 0) {
+        savedEl.textContent = `You save AED ${saved.toFixed(saved % 1 ? 2 : 0)} (${pct}%)`;
+        savedEl.style.display = 'block';
+      } else {
+        savedEl.style.display = 'none';
+      }
+      ladderPctEl.textContent = `Currently: ${pct}% off`;
+
+      // Sticky bar
+      stickyPrice.textContent = `AED ${total.toFixed(total % 1 ? 2 : 0)}`;
+      stickyList.textContent = list.toFixed(list % 1 ? 2 : 0);
+      stickyName.textContent = `Fresh Mint · ${sel.querySelector('.font-serif').textContent} ${purchaseType === 'sub' ? 'Subscribe' : ''}`.trim();
+
+      // Free shipping progress (subscribers always free)
+      const totalForShip = purchaseType === 'sub' ? FREE_SHIP_AT : total;
+      if (purchaseType === 'sub' || total >= FREE_SHIP_AT) {
+        shipBar.style.width = '100%';
+        shipStatus.textContent = purchaseType === 'sub' ? 'Free for subscribers ✓' : 'You qualify ✓';
+        shipMsg.textContent = purchaseType === 'sub' ? 'Subscribers always get free shipping.' : `Free UAE delivery over AED ${FREE_SHIP_AT} · You're set.`;
+        shipStatus.className = 'text-[10px] text-success font-bold uppercase tracking-widest';
+      } else {
+        const pctShip = Math.min(100, (total / FREE_SHIP_AT) * 100);
+        shipBar.style.width = pctShip + '%';
+        shipStatus.textContent = `AED ${(FREE_SHIP_AT - total).toFixed(2)} to free shipping`;
+        shipStatus.className = 'text-[10px] text-rose-dark font-bold uppercase tracking-widest';
+        shipMsg.textContent = `Add AED ${(FREE_SHIP_AT - total).toFixed(2)} more to unlock free UAE delivery.`;
+      }
     }
-    packs.forEach(p => p.addEventListener('click', () => {
-      packs.forEach(x => x.classList.remove('selected'));
-      p.classList.add('selected');
-      updateTotal();
-    }));
-    document.querySelectorAll('input[name="purchase-type"]').forEach(r => {
-      r.addEventListener('change', e => { purchaseType = e.target.value; updateTotal(); });
+
+    // Pack selector
+    document.querySelectorAll('.pack-card').forEach(p => {
+      p.addEventListener('click', () => {
+        document.querySelectorAll('.pack-card').forEach(x => x.classList.remove('selected'));
+        p.classList.add('selected');
+        updateAll();
+      });
     });
 
-    // Quantity stepper
-    const qtyDisp = document.querySelector('.qty-display');
+    // Purchase toggle + subscribe benefits
+    document.querySelectorAll('input[name="purchase-type"]').forEach(r => {
+      r.addEventListener('change', e => {
+        purchaseType = e.target.value;
+        if (purchaseType === 'sub') {
+          subBenefits.classList.add('visible');
+          deliveryFreq.classList.remove('hidden');
+        } else {
+          subBenefits.classList.remove('visible');
+          deliveryFreq.classList.add('hidden');
+        }
+        updateAll();
+      });
+    });
+
+    // Qty stepper
     document.querySelectorAll('.qty-btn').forEach(b => {
       b.addEventListener('click', () => {
         const delta = parseInt(b.dataset.qty);
         qty = Math.max(1, Math.min(99, qty + delta));
-        qtyDisp.textContent = qty;
-        updateTotal();
+        document.querySelector('.qty-display').textContent = qty;
+        updateAll();
       });
     });
+
+    // Addon checkbox
+    const addonInput = document.querySelector('input[name="addon"]');
+    if (addonInput) {
+      addonInput.addEventListener('change', e => { addonChecked = e.target.checked; updateAll(); });
+    }
 
     // Gallery thumbs
     const heroImg = document.getElementById('hero-image');
@@ -999,8 +1227,8 @@
       });
     });
 
-    // Flavor pills (only active on Mint since it's the LP target)
-    document.querySelectorAll('.flavor-pill').forEach((p, i) => {
+    // Flavor pills
+    document.querySelectorAll('.flavor-pill').forEach(p => {
       if (p.tagName === 'BUTTON') {
         p.addEventListener('click', () => {
           document.querySelectorAll('.flavor-pill').forEach(x => x.classList.remove('active'));
@@ -1008,6 +1236,9 @@
         });
       }
     });
+
+    // Initial update
+    updateAll();
   });
 </script>
 
