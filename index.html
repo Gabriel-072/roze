@@ -83,7 +83,7 @@
   .pack-card { transition: all .25s ease; }
   .pack-card.selected { border-color:#0A2219; background:#FFFCF6; box-shadow:0 8px 24px -10px rgba(10,34,25,.2); }
   .pack-card.selected .pack-badge.dynamic { background:#0A2219; color:#F4F1EB; }
-  input[name="pack"], input[name="purchase-type"], input[name="addon"] { position:absolute; opacity:0; pointer-events:none; }
+  input[name="pack"], input[name="purchase-type"], input[name^="addon"] { position:absolute; opacity:0; pointer-events:none; }
   .toggle-pill { transition:all .2s ease; }
   input[name="purchase-type"]:checked + .toggle-pill { background:#0A2219; color:#F4F1EB; }
 
@@ -112,9 +112,9 @@
 
   /* Addon checkbox style */
   .addon-card { transition: all .2s ease; }
-  input[name="addon"]:checked + .addon-card { border-color: #0A2219; background:#FFFCF6; }
-  input[name="addon"]:checked + .addon-card .addon-check { background:#0A2219; border-color:#0A2219; }
-  input[name="addon"]:checked + .addon-card .addon-check::after { content: '✓'; color:#F4F1EB; font-size:11px; line-height:1; }
+  input[name^="addon"]:checked + .addon-card { border-color: #0A2219; background:#FFFCF6; }
+  input[name^="addon"]:checked + .addon-card .addon-check { background:#0A2219; border-color:#0A2219; }
+  input[name^="addon"]:checked + .addon-card .addon-check::after { content: '✓'; color:#F4F1EB; font-size:11px; line-height:1; }
 
   /* Free shipping progress bar */
   .progress-bar { background: linear-gradient(90deg, #C48B80 0%, #A36F65 100%); transition: width .4s ease; }
@@ -397,27 +397,51 @@
         </div>
       </div>
 
-      <!-- Bundle add-on / cross-sell above ATC -->
+      <!-- Bundle add-ons / cross-sell above ATC -->
       <div class="mb-4">
-        <p class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold mb-2">Add to your routine</p>
-        <label class="block relative cursor-pointer">
-          <input type="checkbox" name="addon" />
-          <div class="addon-card bg-paper border-2 border-line rounded-2xl p-3 flex items-center gap-3">
-            <div class="w-14 h-14 rounded-xl bg-cream-alt flex-shrink-0 overflow-hidden">
-              <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Bamboo Toothbrush" class="w-full h-full object-contain p-1" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm font-semibold text-forest leading-tight">Bamboo Toothbrush</div>
-              <div class="text-[11px] text-forest/55 leading-tight mt-0.5">100% biodegradable · The perfect partner</div>
-              <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-sm font-bold text-success">AED 24</span>
-                <span class="text-[11px] text-forest/45 line-through">29</span>
-                <span class="text-[9px] bg-success text-cream px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Save AED 5</span>
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-[10px] uppercase tracking-widest text-forest/55 font-semibold">Add to your routine</p>
+          <p class="text-[10px] uppercase tracking-widest text-success font-bold">Bundle and save</p>
+        </div>
+        <div class="space-y-2">
+          <label class="block relative cursor-pointer">
+            <input type="checkbox" name="addon-brush" />
+            <div class="addon-card bg-paper border-2 border-line rounded-2xl p-3 flex items-center gap-3">
+              <div class="w-14 h-14 rounded-xl bg-cream-alt flex-shrink-0 overflow-hidden">
+                <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Bamboo Toothbrush" class="w-full h-full object-contain p-1" />
               </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-semibold text-forest leading-tight">Bamboo Toothbrush</div>
+                <div class="text-[11px] text-forest/55 leading-tight mt-0.5">100% biodegradable. The perfect partner.</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-sm font-bold text-success">AED 24</span>
+                  <span class="text-[11px] text-forest/45 line-through">29</span>
+                  <span class="text-[9px] bg-success text-cream px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Save AED 5</span>
+                </div>
+              </div>
+              <div class="addon-check w-6 h-6 rounded-md border-2 border-line flex items-center justify-center flex-shrink-0"></div>
             </div>
-            <div class="addon-check w-6 h-6 rounded-md border-2 border-line flex items-center justify-center flex-shrink-0"></div>
-          </div>
-        </label>
+          </label>
+
+          <label class="block relative cursor-pointer">
+            <input type="checkbox" name="addon-scraper" />
+            <div class="addon-card bg-paper border-2 border-line rounded-2xl p-3 flex items-center gap-3">
+              <div class="w-14 h-14 rounded-xl bg-cream-alt flex-shrink-0 flex items-center justify-center">
+                <i class="ph-fill ph-leaf text-rose text-2xl"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-semibold text-forest leading-tight">Copper Tongue Scraper</div>
+                <div class="text-[11px] text-forest/55 leading-tight mt-0.5">Ayurvedic ritual. Cleans where brushing can't reach.</div>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-sm font-bold text-success">AED 19</span>
+                  <span class="text-[11px] text-forest/45 line-through">25</span>
+                  <span class="text-[9px] bg-success text-cream px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Save AED 6</span>
+                </div>
+              </div>
+              <div class="addon-check w-6 h-6 rounded-md border-2 border-line flex items-center justify-center flex-shrink-0"></div>
+            </div>
+          </label>
+        </div>
       </div>
 
       <!-- Free shipping progress -->
@@ -1143,8 +1167,12 @@
     let currentFlavor = 'mint';
     let purchaseType = 'once';
     let qty = 1;
-    let addonChecked = false;
-    const ADDON_PRICE = 24;
+    let addonBrush = false;
+    let addonScraper = false;
+    const ADDON_BRUSH_PRICE = 24;
+    const ADDON_BRUSH_LIST = 29;
+    const ADDON_SCRAPER_PRICE = 19;
+    const ADDON_SCRAPER_LIST = 25;
     const FREE_SHIP_AT = 300;
 
     const totalEl = document.getElementById('total-price');
@@ -1170,7 +1198,8 @@
       const listPrice = parseFloat(sel.dataset.list);
       let total = basePrice * qty;
       let list = listPrice * qty;
-      if (addonChecked) { total += ADDON_PRICE; list += 29; }
+      if (addonBrush)   { total += ADDON_BRUSH_PRICE;   list += ADDON_BRUSH_LIST; }
+      if (addonScraper) { total += ADDON_SCRAPER_PRICE; list += ADDON_SCRAPER_LIST; }
       const saved = list - total;
       const pct = list > 0 ? Math.round((saved / list) * 100) : 0;
 
@@ -1241,11 +1270,11 @@
       });
     });
 
-    // Addon checkbox
-    const addonInput = document.querySelector('input[name="addon"]');
-    if (addonInput) {
-      addonInput.addEventListener('change', e => { addonChecked = e.target.checked; updateAll(); });
-    }
+    // Addon checkboxes
+    const brushInput = document.querySelector('input[name="addon-brush"]');
+    if (brushInput) brushInput.addEventListener('change', e => { addonBrush = e.target.checked; updateAll(); });
+    const scraperInput = document.querySelector('input[name="addon-scraper"]');
+    if (scraperInput) scraperInput.addEventListener('change', e => { addonScraper = e.target.checked; updateAll(); });
 
     // ---- Flavor render ----
     function renderFlavor(flavorKey) {
