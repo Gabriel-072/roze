@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1B2D27" />
+<title>Roze Biohealth — The First Luxury Toothpaste with 15% Hydroxyapatite | Dubai</title>
+<meta name="description" content="Formulated in Dubai by Dr. David Roze. The first 15% hydroxyapatite toothpaste in the Middle East — actively rebuilds enamel, whitens, and reduces sensitivity. Zero fluoride, zero SLS, zero toxins." />
+<link rel="icon" type="image/png" href="https://rozebiohealth.com/wp-content/uploads/2024/10/cropped-fav_roze_biohealth-270x270.png" />
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://rozebiohealth.com" />
+<link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
+<!-- Fonts: Editorial serif + clean sans -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CDN (Play) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:   '#FAF6EE',
+          sand:    '#EDE3D0',
+          ivory:   '#FFFCF6',
+          forest:  '#1B2D27',
+          moss:    '#2E4A40',
+          gold:    '#B08D5B',
+          copper:  '#9C6F3E',
+          ink:     '#1A1A1A',
+          mute:    '#6B6B6B',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
+        boxShadow: {
+          soft: '0 10px 40px -10px rgba(27, 45, 39, 0.18)',
+          deep: '0 25px 50px -12px rgba(27, 45, 39, 0.35)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body  { font-family: 'Inter', system-ui, sans-serif; background: #FAF6EE; color: #1B2D27; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: -0.01em; }
+  .grain {
+    background-image: radial-gradient(rgba(27,45,39,0.04) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  details[open] summary .plus { transform: rotate(45deg); }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  .price-tag {
+    background: linear-gradient(135deg, #B08D5B 0%, #9C6F3E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Smooth border for product cards */
+  .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 25px 50px -12px rgba(27, 45, 39, 0.25); }
+</style>
+</head>
+<body class="bg-cream text-forest">
+
+<!-- ============================ ANNOUNCEMENT BAR ============================ -->
+<div class="bg-forest text-cream text-center py-2.5 text-xs sm:text-sm font-medium tracking-wide">
+  Free UAE delivery on orders over 150 AED · 30-day money-back guarantee
+</div>
+
+<!-- ============================ NAV ============================ -->
+<header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-forest/8">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+    <a href="https://rozebiohealth.com" class="flex items-center gap-2">
+      <img src="https://rozebiohealth.com/wp-content/uploads/2024/09/Logo_NB_ROZE.png" alt="Roze Biohealth" class="h-9 sm:h-10 w-auto" />
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-forest/80">
+      <a href="#science" class="hover:text-forest transition">The Science</a>
+      <a href="#founder" class="hover:text-forest transition">Dr. Roze</a>
+      <a href="#pricing" class="hover:text-forest transition">Shop</a>
+      <a href="#faq" class="hover:text-forest transition">FAQ</a>
+    </div>
+    <a href="#pricing" class="bg-forest text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-moss transition">
+      Shop Now
+    </a>
+  </nav>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
+
+    <!-- Hero copy -->
+    <div class="order-2 lg:order-1">
+      <div class="inline-flex items-center gap-2 bg-forest/5 border border-forest/10 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-forest/70 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+        Formulated by Dr. David Roze · Dubai
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] font-medium text-forest">
+        The first toothpaste that actually <em class="text-copper not-italic font-semibold">rebuilds</em> your teeth.
+      </h1>
+
+      <p class="mt-6 text-lg sm:text-xl text-forest/75 leading-relaxed max-w-xl">
+        15% hydroxyapatite — the same nano-mineral your enamel is made of. Zero fluoride, zero SLS, zero artificial anything. Made in the UAE, trusted by Dubai's most discerning families.
+      </p>
+
+      <!-- Quick-trust bullets -->
+      <ul class="mt-8 space-y-2.5 text-base">
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-copper shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span class="text-forest/85">Rebuilds enamel & reduces sensitivity in 14 days</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-copper shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span class="text-forest/85">Whitens naturally — no peroxide, no abrasion</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-copper shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <span class="text-forest/85">Safe for kids, pregnant moms, and the whole family</span>
+        </li>
+      </ul>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="#pricing" class="inline-flex items-center justify-center gap-2 bg-forest text-cream px-8 py-4 rounded-full font-semibold text-base hover:bg-moss transition shadow-soft">
+          Shop Roze — from 82 AED
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#science" class="inline-flex items-center justify-center gap-2 text-forest/80 px-6 py-4 rounded-full font-semibold text-base hover:text-forest transition border border-forest/15">
+          See the science
+        </a>
+      </div>
+
+      <!-- Mini-proof -->
+      <div class="mt-8 flex items-center gap-4 text-sm text-forest/65">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full bg-sand border-2 border-cream flex items-center justify-center text-xs font-bold text-forest">SK</div>
+          <div class="w-8 h-8 rounded-full bg-gold border-2 border-cream flex items-center justify-center text-xs font-bold text-cream">AR</div>
+          <div class="w-8 h-8 rounded-full bg-moss border-2 border-cream flex items-center justify-center text-xs font-bold text-cream">FM</div>
+          <div class="w-8 h-8 rounded-full bg-copper border-2 border-cream flex items-center justify-center text-xs font-bold text-cream">+</div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1">
+            <span class="text-gold">★★★★★</span>
+            <span class="font-semibold text-forest">4.9</span>
+          </div>
+          <span class="text-forest/55">Trusted by 12,000+ UAE families</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero product image -->
+    <div class="order-1 lg:order-2 relative">
+      <div class="relative aspect-square max-w-xl mx-auto">
+        <!-- Soft circular glow background -->
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-sand to-cream blur-3xl opacity-70"></div>
+        <div class="relative h-full w-full flex items-center justify-center">
+          <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg"
+               alt="Roze Biohealth Natural Fresh Mint Toothpaste with 15% Hydroxyapatite"
+               class="relative z-10 max-h-[500px] w-auto drop-shadow-2xl" />
+        </div>
+
+        <!-- Floating ingredient cards -->
+        <div class="hidden md:block absolute top-8 -left-4 bg-ivory rounded-xl shadow-soft p-4 border border-forest/8 max-w-[180px]">
+          <div class="text-2xl font-display font-bold text-copper">15%</div>
+          <div class="text-xs font-semibold text-forest uppercase tracking-wider">Hydroxyapatite</div>
+          <div class="text-xs text-forest/60 mt-1">Highest concentration in the Middle East</div>
+        </div>
+        <div class="hidden md:block absolute bottom-12 -right-4 bg-ivory rounded-xl shadow-soft p-4 border border-forest/8 max-w-[180px]">
+          <div class="text-2xl font-display font-bold text-copper">0</div>
+          <div class="text-xs font-semibold text-forest uppercase tracking-wider">Toxins</div>
+          <div class="text-xs text-forest/60 mt-1">No fluoride, SLS, parabens, or sweeteners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRESS / TRUST BAR ============================ -->
+<section class="bg-forest text-cream py-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <p class="text-center text-xs uppercase tracking-[0.3em] text-cream/50 mb-4">Certified & trusted</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm font-medium text-cream/80">
+      <span>EU Certified</span>
+      <span class="text-cream/30">·</span>
+      <span>SGS Tested</span>
+      <span class="text-cream/30">·</span>
+      <span>Halal Certified</span>
+      <span class="text-cream/30">·</span>
+      <span>BPA-Free</span>
+      <span class="text-cream/30">·</span>
+      <span>FSC Certified</span>
+      <span class="text-cream/30">·</span>
+      <span>Made in UAE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROBLEM ============================ -->
+<section class="py-20 sm:py-28 bg-ivory">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center">
+    <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">The uncomfortable truth</p>
+    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-6">
+      You've been brushing with chemicals your dentist wouldn't swallow.
+    </h2>
+    <p class="text-lg text-forest/70 max-w-2xl mx-auto leading-relaxed">
+      Open the tube of the toothpaste in your bathroom. Read the back. Then read what each ingredient actually does.
+    </p>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-16 grid md:grid-cols-3 gap-6">
+    <div class="bg-cream border border-forest/10 rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-full bg-copper/15 flex items-center justify-center mb-5">
+        <svg class="w-6 h-6 text-copper" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <h3 class="font-display text-2xl font-semibold mb-2">Fluoride</h3>
+      <p class="text-forest/65 text-sm leading-relaxed">A neurotoxin in higher doses. The FDA requires a poison warning on every fluoride tube sold in the US. Linked to thyroid dysfunction and fluorosis in children.</p>
+    </div>
+    <div class="bg-cream border border-forest/10 rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-full bg-copper/15 flex items-center justify-center mb-5">
+        <svg class="w-6 h-6 text-copper" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <h3 class="font-display text-2xl font-semibold mb-2">SLS</h3>
+      <p class="text-forest/65 text-sm leading-relaxed">A foaming agent borrowed from industrial degreasers. Strips your oral microbiome and is a leading cause of canker sores and mouth ulcers.</p>
+    </div>
+    <div class="bg-cream border border-forest/10 rounded-2xl p-7">
+      <div class="w-12 h-12 rounded-full bg-copper/15 flex items-center justify-center mb-5">
+        <svg class="w-6 h-6 text-copper" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <h3 class="font-display text-2xl font-semibold mb-2">Artificial Sweeteners</h3>
+      <p class="text-forest/65 text-sm leading-relaxed">Saccharin and aspartame, swallowed twice daily. Disrupts gut bacteria, alters insulin response, and accumulates over decades of brushing.</p>
+    </div>
+  </div>
+
+  <p class="text-center mt-12 text-forest/60 max-w-xl mx-auto px-5">
+    There's a reason the tube says "do not swallow." There's a reason we made something you can.
+  </p>
+</section>
+
+<!-- ============================ THE SCIENCE ============================ -->
+<section id="science" class="py-20 sm:py-28 bg-cream">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div>
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">The science</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-6">
+        15% Hydroxyapatite. <br/>The molecule your teeth are made of.
+      </h2>
+      <p class="text-lg text-forest/70 leading-relaxed mb-6">
+        Your enamel is 97% hydroxyapatite — a naturally occurring calcium-phosphate mineral. Fluoride <em>coats</em> teeth with an artificial barrier. Hydroxyapatite <em>becomes</em> your teeth.
+      </p>
+      <p class="text-lg text-forest/70 leading-relaxed mb-8">
+        Roze contains 15% nano-hydroxyapatite — the highest concentration available in the Middle East, and the same molecule recommended by Japan's national dental authority since 1980.
+      </p>
+
+      <div class="space-y-5">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-forest text-cream flex items-center justify-center font-display font-bold shrink-0">1</div>
+          <div>
+            <h4 class="font-semibold text-forest">Penetrates micro-cracks</h4>
+            <p class="text-forest/65 text-sm leading-relaxed">Nano-sized particles enter enamel lesions invisible to the eye, where conventional minerals can't reach.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-forest text-cream flex items-center justify-center font-display font-bold shrink-0">2</div>
+          <div>
+            <h4 class="font-semibold text-forest">Remineralizes from within</h4>
+            <p class="text-forest/65 text-sm leading-relaxed">Calcium and phosphate crystallize into new enamel structure — actually rebuilding lost tooth surface.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-forest text-cream flex items-center justify-center font-display font-bold shrink-0">3</div>
+          <div>
+            <h4 class="font-semibold text-forest">Seals dentin tubules</h4>
+            <p class="text-forest/65 text-sm leading-relaxed">Sensitivity vanishes as exposed nerve channels are closed — typically within 14 days of daily use.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side product card -->
+    <div class="relative">
+      <div class="bg-ivory rounded-3xl p-8 sm:p-12 shadow-soft border border-forest/8 relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-sand/40 blur-3xl"></div>
+        <div class="relative">
+          <div class="flex items-baseline gap-2 mb-2">
+            <div class="font-display text-7xl sm:text-8xl font-semibold text-copper">15%</div>
+            <div class="text-forest/60 text-sm">vs. industry avg. 5%</div>
+          </div>
+          <h3 class="font-display text-2xl font-semibold text-forest mb-6">Highest concentration of nano-hydroxyapatite in the GCC</h3>
+
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-center pb-3 border-b border-forest/10">
+              <span class="text-forest/70">Roze Biohealth</span>
+              <span class="font-bold text-forest">15%</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-forest/10">
+              <span class="text-forest/70">Premium European brands</span>
+              <span class="font-semibold text-forest/70">7–10%</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-forest/10">
+              <span class="text-forest/70">Most "natural" toothpastes</span>
+              <span class="font-semibold text-forest/70">0–5%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-forest/70">Conventional (fluoride)</span>
+              <span class="font-semibold text-forest/70">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ INGREDIENTS ============================ -->
+<section class="py-20 sm:py-28 bg-forest text-cream relative overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+    <div class="text-center mb-16">
+      <p class="text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4">Inside every tube</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] max-w-3xl mx-auto">
+        Four ingredients. Each one earns its place.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur-sm">
+        <div class="w-14 h-14 rounded-full bg-gold/20 flex items-center justify-center mb-5 text-2xl">◇</div>
+        <h3 class="font-display text-2xl font-semibold mb-2 text-cream">15% Hydroxyapatite</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Rebuilds enamel, whitens, reduces sensitivity. Biocompatible — safe to swallow.</p>
+      </div>
+      <div class="bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur-sm">
+        <div class="w-14 h-14 rounded-full bg-gold/20 flex items-center justify-center mb-5 text-2xl">✿</div>
+        <h3 class="font-display text-2xl font-semibold mb-2 text-cream">Indian Manjistha</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Ayurvedic root used for 3,000 years to stop bleeding gums and fight oral bacteria.</p>
+      </div>
+      <div class="bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur-sm">
+        <div class="w-14 h-14 rounded-full bg-gold/20 flex items-center justify-center mb-5 text-2xl">⌘</div>
+        <h3 class="font-display text-2xl font-semibold mb-2 text-cream">Arabic Acacia</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Anti-plaque, anti-inflammatory. Raises saliva pH back to alkaline — the enamel-safe zone.</p>
+      </div>
+      <div class="bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur-sm">
+        <div class="w-14 h-14 rounded-full bg-gold/20 flex items-center justify-center mb-5 text-2xl">❀</div>
+        <h3 class="font-display text-2xl font-semibold mb-2 text-cream">Organic Mint or Vanilla</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Fresh mint from a single-origin farm, or Madagascar vanilla from an organic cooperative. Real ingredients, real flavor.</p>
+      </div>
+    </div>
+
+    <p class="text-center mt-12 text-cream/55 text-sm max-w-2xl mx-auto">
+      That's the full list. No surfactants. No preservatives. No "fragrance." No proprietary blends. If we wouldn't feed it to a child, it doesn't go in the tube.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ FOUNDER ============================ -->
+<section id="founder" class="py-20 sm:py-28 bg-cream">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-5 gap-12 items-center">
+
+    <div class="lg:col-span-2 relative">
+      <div class="aspect-[4/5] rounded-3xl overflow-hidden bg-sand shadow-soft relative">
+        <!-- Placeholder: Dr. Roze image. Replace with real photo -->
+        <div class="absolute inset-0 bg-gradient-to-br from-moss/80 to-forest"></div>
+        <div class="absolute inset-0 grain opacity-30"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 text-cream">
+          <div class="font-display text-3xl font-semibold">Dr. David Roze</div>
+          <div class="text-cream/70 text-sm uppercase tracking-wider mt-1">Founder · Dental Surgeon · Dubai</div>
+        </div>
+      </div>
+      <div class="absolute -bottom-6 -right-6 hidden md:block bg-gold text-forest px-5 py-3 rounded-xl shadow-soft">
+        <div class="text-xs uppercase font-bold tracking-wider">25+ years</div>
+        <div class="text-sm font-semibold">Practicing dentistry</div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-3">
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">A note from the founder</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-medium leading-[1.05] mb-6">
+        "I spent 25 years rebuilding patients' teeth. Then I built the toothpaste that would have prevented half my appointments."
+      </h2>
+      <div class="space-y-4 text-forest/75 leading-relaxed">
+        <p>I'm Dr. David Roze, a dental surgeon practicing in Dubai. For two decades I watched the same pattern repeat: patients brushing diligently with name-brand toothpaste, and still showing up with sensitivity, weak enamel, and gum disease.</p>
+        <p>The problem wasn't them. It was what they were brushing with.</p>
+        <p>So I formulated Roze in my clinic with one rule: every ingredient had to either rebuild the tooth, or earn its place. No exceptions. We use 15% hydroxyapatite — three times the European standard — because that's what your enamel is actually made of. Everything else is theater.</p>
+      </div>
+      <div class="mt-8 flex items-center gap-4">
+        <div class="font-display text-2xl text-copper italic">— Dr. David Roze, DDS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPARISON ============================ -->
+<section class="py-20 sm:py-28 bg-ivory">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">Side by side</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05]">
+        Roze vs. the tube in your bathroom.
+      </h2>
+    </div>
+
+    <div class="bg-cream rounded-3xl overflow-hidden shadow-soft border border-forest/8">
+      <div class="grid grid-cols-3 text-sm sm:text-base">
+        <div class="p-5 sm:p-6 font-semibold text-forest/40 uppercase tracking-wider text-xs">Feature</div>
+        <div class="p-5 sm:p-6 font-display text-xl font-semibold text-forest bg-forest/5 text-center">Roze</div>
+        <div class="p-5 sm:p-6 font-display text-xl font-semibold text-forest/50 text-center">Conventional</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Active ingredient</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center font-semibold text-forest">15% Hydroxyapatite</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/60">Fluoride</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Rebuilds enamel</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓ Actively</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">Coats only</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Safe to swallow</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓ Yes</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">✗ Poison warning</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">SLS-free</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">✗</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Artificial sweeteners</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓ None</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">Saccharin/aspartame</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Whitens</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓ Mineral-based</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">Abrasive/peroxide</div>
+
+        <div class="p-5 sm:p-6 border-t border-forest/8 font-medium">Pregnancy & kid safe</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 bg-forest/5 text-center text-copper">✓</div>
+        <div class="p-5 sm:p-6 border-t border-forest/8 text-center text-forest/50">Not recommended</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section class="py-20 sm:py-28 bg-cream">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">Real customers, real teeth</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05]">
+        "I'll never go back to regular toothpaste."
+      </h2>
+      <div class="flex items-center justify-center gap-2 mt-6 text-forest/70">
+        <span class="text-2xl text-gold">★★★★★</span>
+        <span class="font-semibold">4.9/5 — 2,400+ reviews</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-ivory rounded-2xl p-7 border border-forest/8">
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="text-forest/80 leading-relaxed mb-5">"My sensitivity is completely gone after three weeks. I used to dread cold water — now I can drink iced coffee without flinching. My dentist asked what I was doing differently."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center font-bold text-forest">SA</div>
+          <div>
+            <div class="font-semibold text-sm">Sara A.</div>
+            <div class="text-xs text-forest/60">Dubai · Verified buyer</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-ivory rounded-2xl p-7 border border-forest/8">
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="text-forest/80 leading-relaxed mb-5">"I was worried about my kids swallowing toothpaste. With Roze I don't have to worry — and they actually love the vanilla flavor. It's the first non-fluoride brand my pediatric dentist approved."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-bold text-cream">MK</div>
+          <div>
+            <div class="font-semibold text-sm">Maryam K.</div>
+            <div class="text-xs text-forest/60">Abu Dhabi · Mom of two</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-ivory rounded-2xl p-7 border border-forest/8">
+        <div class="text-gold text-lg mb-4">★★★★★</div>
+        <p class="text-forest/80 leading-relaxed mb-5">"I've been deep in the biohacking world for years and finally found a toothpaste with real nano-HAP at clinical concentration. The fact that it's made in the UAE is a bonus. Subscribed for life."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-moss flex items-center justify-center font-bold text-cream">FH</div>
+          <div>
+            <div class="font-semibold text-sm">Faisal H.</div>
+            <div class="text-xs text-forest/60">Dubai · Subscriber</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-forest/50 mt-8 italic">Testimonials shown represent typical results. Replace with real customer reviews before launch.</p>
+  </div>
+</section>
+
+<!-- ============================ PRICING / SHOP ============================ -->
+<section id="pricing" class="py-20 sm:py-28 bg-sand/30">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-12">
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">Pick your tube</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-4">
+        Two flavors. One promise.
+      </h2>
+      <p class="text-lg text-forest/65 max-w-2xl mx-auto">
+        Same clinical formula. Same 15% hydroxyapatite. Pick the flavor — or grab both.
+      </p>
+    </div>
+
+    <!-- Flavor cards -->
+    <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+
+      <!-- Mint -->
+      <div class="bg-cream rounded-3xl overflow-hidden shadow-soft border border-forest/8 card-hover">
+        <div class="aspect-square bg-gradient-to-br from-ivory to-sand/40 relative flex items-center justify-center p-8">
+          <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg" alt="Roze Fresh Mint Toothpaste" class="max-h-72 w-auto drop-shadow-xl" />
+          <div class="absolute top-5 left-5 bg-forest text-cream px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Bestseller</div>
+        </div>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-display text-3xl font-semibold mb-2">Fresh Mint</h3>
+          <p class="text-forest/65 text-sm mb-5">Single-origin organic mint extract. A clean, bright finish — the natural mint your dentist wishes existed.</p>
+
+          <!-- Pack options -->
+          <div class="space-y-3 mb-6">
+            <a href="https://rozebiohealth.com/shop/natural-fresh-mint-toothpaste-sub/" class="block border border-forest/15 rounded-xl p-4 hover:border-forest hover:bg-forest/3 transition group">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">1 Pack</div>
+                  <div class="text-xs text-forest/60">90-day supply · Free UAE delivery over 150 AED</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-lg text-forest">82 AED</div>
+                </div>
+              </div>
+            </a>
+            <a href="https://rozebiohealth.com/shop/natural-fresh-mint-toothpaste-sub/" class="block border-2 border-copper rounded-xl p-4 bg-copper/5 hover:bg-copper/10 transition relative">
+              <div class="absolute -top-3 left-4 bg-copper text-cream px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">Most popular</div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">3 Pack</div>
+                  <div class="text-xs text-forest/60">9-month supply · Save 20 AED</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs line-through text-forest/40">246 AED</div>
+                  <div class="font-bold text-lg text-forest">248 AED</div>
+                </div>
+              </div>
+            </a>
+            <a href="https://rozebiohealth.com/shop/natural-fresh-mint-toothpaste-sub/" class="block border border-forest/15 rounded-xl p-4 hover:border-forest hover:bg-forest/3 transition">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">4 + 2 Free</div>
+                  <div class="text-xs text-forest/60">18-month supply · Best value</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs line-through text-forest/40">492 AED</div>
+                  <div class="font-bold text-lg text-forest">328 AED</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <a href="https://rozebiohealth.com/shop/natural-fresh-mint-toothpaste-sub/" class="block w-full bg-forest text-cream text-center px-6 py-4 rounded-full font-semibold hover:bg-moss transition">
+            Shop Fresh Mint →
+          </a>
+        </div>
+      </div>
+
+      <!-- Vanilla -->
+      <div class="bg-cream rounded-3xl overflow-hidden shadow-soft border border-forest/8 card-hover">
+        <div class="aspect-square bg-gradient-to-br from-ivory to-sand/40 relative flex items-center justify-center p-8">
+          <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg" alt="Roze Natural Vanilla Toothpaste" class="max-h-72 w-auto drop-shadow-xl" />
+          <div class="absolute top-5 left-5 bg-gold text-forest px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Kid-favorite</div>
+        </div>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-display text-3xl font-semibold mb-2">Madagascar Vanilla</h3>
+          <p class="text-forest/65 text-sm mb-5">Pure vanilla extract from an organic farm in Madagascar. A subtle, warm sweetness — the only toothpaste your kids will ask for.</p>
+
+          <!-- Pack options -->
+          <div class="space-y-3 mb-6">
+            <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="block border border-forest/15 rounded-xl p-4 hover:border-forest hover:bg-forest/3 transition">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">1 Pack</div>
+                  <div class="text-xs text-forest/60">90-day supply · Free UAE delivery over 150 AED</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-lg text-forest">82 AED</div>
+                </div>
+              </div>
+            </a>
+            <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="block border-2 border-copper rounded-xl p-4 bg-copper/5 hover:bg-copper/10 transition relative">
+              <div class="absolute -top-3 left-4 bg-copper text-cream px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">Most popular</div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">3 Pack</div>
+                  <div class="text-xs text-forest/60">9-month supply</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-lg text-forest">246 AED</div>
+                </div>
+              </div>
+            </a>
+            <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="block border border-forest/15 rounded-xl p-4 hover:border-forest hover:bg-forest/3 transition">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-semibold text-forest">4 + 2 Free</div>
+                  <div class="text-xs text-forest/60">18-month supply · Best value</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs line-through text-forest/40">492 AED</div>
+                  <div class="font-bold text-lg text-forest">328 AED</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="block w-full bg-forest text-cream text-center px-6 py-4 rounded-full font-semibold hover:bg-moss transition">
+            Shop Vanilla →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe banner -->
+    <div class="mt-10 bg-forest text-cream rounded-3xl p-7 sm:p-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-10 shadow-soft">
+      <div class="text-gold text-5xl font-display font-bold">−20%</div>
+      <div class="flex-1 text-center sm:text-left">
+        <div class="font-display text-2xl font-semibold mb-1">Subscribe & save up to 20%</div>
+        <div class="text-cream/70 text-sm">Skip, swap, or cancel anytime. Delivered to your door every 1, 2, or 3 months.</div>
+      </div>
+      <a href="https://rozebiohealth.com/shop/natural-fresh-mint-toothpaste-sub/" class="bg-cream text-forest px-6 py-3 rounded-full font-semibold text-sm whitespace-nowrap hover:bg-gold hover:text-forest transition">
+        Start subscription
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GUARANTEE ============================ -->
+<section class="py-16 bg-cream">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 grid sm:grid-cols-3 gap-8 text-center">
+    <div class="flex flex-col items-center">
+      <div class="w-14 h-14 rounded-full bg-forest/5 flex items-center justify-center mb-4">
+        <svg class="w-7 h-7 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h4 class="font-display text-xl font-semibold mb-1">30-day guarantee</h4>
+      <p class="text-forest/60 text-sm">Try it. If your teeth don't feel better in 30 days, full refund.</p>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-14 h-14 rounded-full bg-forest/5 flex items-center justify-center mb-4">
+        <svg class="w-7 h-7 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+      </div>
+      <h4 class="font-display text-xl font-semibold mb-1">Free UAE delivery</h4>
+      <p class="text-forest/60 text-sm">On orders over 150 AED. 2-3 day delivery across the Emirates.</p>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-14 h-14 rounded-full bg-forest/5 flex items-center justify-center mb-4">
+        <svg class="w-7 h-7 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+      </div>
+      <h4 class="font-display text-xl font-semibold mb-1">Clinically formulated</h4>
+      <p class="text-forest/60 text-sm">Made in the UAE in Dr. Roze's clinic. EU, SGS, Halal certified.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="py-20 sm:py-28 bg-ivory">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="text-xs uppercase tracking-[0.25em] text-copper font-semibold mb-4">Questions, answered</p>
+      <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05]">
+        The honest answers.
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>Is hydroxyapatite actually safer than fluoride?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">Hydroxyapatite is the natural mineral your teeth and bones are made of — your body produces it. Fluoride is a foreign substance the body cannot use, and at concentrations above 1.0 ppm (most toothpastes) it's regulated as a poison. Japan has used HAP as its national cavity-prevention standard since 1980 with zero reported toxicity cases.</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>Can my kids use this?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">Yes — Roze is one of the few toothpastes specifically formulated to be safe if swallowed. Many of our customers introduce it to kids as young as 18 months. (The vanilla flavor is wildly popular with children who refuse mint.)</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>How long until I see results?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">Most customers report reduced sensitivity within 14 days. Visible whitening typically appears between weeks 3 and 6. Enamel rebuilding is a continuous process — the longer you use it, the stronger your teeth become.</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>Will it work if my tap water has fluoride?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">Yes. Hydroxyapatite works independently and rebuilds enamel regardless of what's in your water. Good news for UAE residents: Dubai and Abu Dhabi tap water is not artificially fluoridated.</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>Why does it tingle a little at first?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">It's a sign the active ingredients are rebalancing your oral microbiome — usually after years of disruption from SLS. The sensation fades within 1-2 weeks as your mouth chemistry stabilizes.</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>How fast is delivery in the UAE?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">2–3 business days across the UAE. Free delivery on orders over 150 AED. We ship from our Jumeirah Beach Road location in Dubai.</p>
+      </details>
+      <details class="bg-cream rounded-xl border border-forest/10 p-5 group">
+        <summary class="flex items-center justify-between font-semibold text-forest">
+          <span>What if I don't like it?</span>
+          <span class="plus text-2xl text-copper transition-transform">+</span>
+        </summary>
+        <p class="mt-4 text-forest/70 leading-relaxed text-sm">30-day money-back guarantee, no questions asked. Email us and we'll refund you — keep the tubes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="py-20 sm:py-28 bg-forest text-cream relative overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30"></div>
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center relative">
+    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.05] mb-6">
+      Your enamel is too important to compromise on.
+    </h2>
+    <p class="text-lg text-cream/75 max-w-2xl mx-auto mb-10">
+      Join 12,000+ UAE families who already made the switch. Free delivery on orders over 150 AED. 30-day guarantee.
+    </p>
+    <a href="#pricing" class="inline-flex items-center gap-2 bg-cream text-forest px-8 py-4 rounded-full font-semibold text-base hover:bg-gold transition shadow-deep">
+      Shop Roze — from 82 AED
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-cream/55 uppercase tracking-wider">
+      <span>EU Certified</span>
+      <span>·</span>
+      <span>Halal</span>
+      <span>·</span>
+      <span>SGS Tested</span>
+      <span>·</span>
+      <span>Made in UAE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="bg-forest border-t border-cream/10 py-10 text-cream/60 text-sm">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+      <img src="https://rozebiohealth.com/wp-content/uploads/2023/02/Logo-ROZE-BIO-HEALTH-LLC.png" alt="Roze Biohealth" class="h-8 w-auto opacity-80" />
+      <span>© 2026 ROZE Bio Health Trading LLC · Dubai, UAE</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="https://rozebiohealth.com/about-us/" class="hover:text-cream transition">About</a>
+      <a href="https://rozebiohealth.com/policy/" class="hover:text-cream transition">Policy</a>
+      <a href="https://rozebiohealth.com/faq/" class="hover:text-cream transition">FAQ</a>
+      <a href="mailto:info@rozebiohealth.com" class="hover:text-cream transition">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<div class="fixed bottom-0 left-0 right-0 md:hidden bg-cream/95 backdrop-blur-md border-t border-forest/10 p-3 z-40 shadow-deep">
+  <a href="#pricing" class="block w-full bg-forest text-cream text-center px-6 py-3.5 rounded-full font-semibold text-sm">
+    Shop Roze — from 82 AED
+  </a>
+</div>
+
+<!-- Add bottom padding so sticky CTA doesn't cover content on mobile -->
+<div class="md:hidden h-20"></div>
+
+<script>
+  // Simple scroll-reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
