@@ -97,7 +97,10 @@
   body { padding-bottom: 92px; }
   @media (min-width: 1024px) { body { padding-bottom: 0; } }
 
-  .hero-block { background: linear-gradient(180deg, #E8EFE7 0%, #DDE6DC 100%); }
+  .hero-block { transition: background .5s ease; }
+  .hero-block.flavor-mint { background: linear-gradient(180deg, #E8EFE7 0%, #DDE6DC 100%); }
+  .hero-block.flavor-vanilla { background: linear-gradient(180deg, #F4ECD8 0%, #E8DFC6 100%); }
+  .hero-block.flavor-watermelon { background: linear-gradient(180deg, #F7E1DC 0%, #EBC9C2 100%); }
 
   .qty-btn { transition: background .15s ease; }
   .qty-btn:hover { background: rgba(10,34,25,0.06); }
@@ -193,7 +196,7 @@
             <p class="text-[10px] uppercase tracking-widest text-rose font-semibold mb-1 flex items-center gap-1.5">
               <i class="ph-fill ph-sparkle"></i> 100% Natural · Dentist-Made
             </p>
-            <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight">Natural <em class="text-forest/85">Fresh Mint</em></h1>
+            <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight" id="product-title">Natural <em class="text-forest/85">Fresh Mint</em></h1>
           </div>
           <div class="text-right shrink-0">
             <div class="text-rose text-sm tracking-wider"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
@@ -201,51 +204,33 @@
           </div>
         </div>
 
-        <!-- Flavor pills -->
+        <!-- Flavor pills — swap product in-page -->
         <div class="h-scroll-wrap -mx-4 sm:-mx-6 lg:mx-0">
           <div class="flex gap-2.5 overflow-x-auto no-scrollbar px-4 sm:px-6 lg:px-0 pb-1">
-            <button class="flavor-pill snap-item active flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-mint p-2 border border-transparent">
+            <button data-flavor="mint" class="flavor-pill snap-item active flex flex-col items-center gap-1 shrink-0 w-[72px] rounded-2xl bg-mint p-2 border border-transparent">
               <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-mint-deep flex items-center justify-center overflow-hidden">
                 <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="Mint" class="w-full h-full object-contain p-0.5" />
               </div>
-              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Mint</span>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Fresh Mint</span>
             </button>
-            <a href="https://rozebiohealth.com/shop/natural-vanilla-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
+            <button data-flavor="vanilla" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[72px] rounded-2xl bg-cream-soft p-2 border border-line">
               <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
                 <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg" alt="Vanilla" class="w-full h-full object-contain p-0.5" />
               </div>
               <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Vanilla</span>
-            </a>
-            <a href="https://rozebiohealth.com/shop/watermelon-toothpaste-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-rose/15 p-2 border border-line">
+            </button>
+            <button data-flavor="watermelon" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[72px] rounded-2xl bg-rose/15 p-2 border border-line">
               <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-rose/25 flex items-center justify-center overflow-hidden">
                 <img src="https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg" alt="Watermelon" class="w-full h-full object-contain p-0.5" />
               </div>
-              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Melon</span>
-            </a>
-            <a href="https://rozebiohealth.com/shop/dental-kit-sub/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
-              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
-                <img src="https://rozebiohealth.com/wp-content/uploads/2025/05/RAH08378-400x400.jpg" alt="Dental Kit" class="w-full h-full object-contain p-0.5" />
-              </div>
-              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Kit</span>
-            </a>
-            <a href="https://rozebiohealth.com/shop/bamboo-toothbrush-soft-junior/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-cream-soft p-2 border border-line">
-              <div class="flavor-img-wrap w-12 h-12 rounded-xl bg-cream-alt flex items-center justify-center overflow-hidden">
-                <img src="https://rozebiohealth.com/wp-content/uploads/2024/05/kids_toothbrush_0000_Layer-4-400x400.jpg" alt="Brush" class="w-full h-full object-contain p-0.5" />
-              </div>
-              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Brush</span>
-            </a>
-            <a href="https://rozebiohealth.com/shop/dental-bundles/" class="flavor-pill snap-item flex flex-col items-center gap-1 shrink-0 w-[68px] rounded-2xl bg-forest text-cream p-2 border border-transparent">
-              <div class="w-12 h-12 rounded-xl bg-moss flex items-center justify-center">
-                <span class="font-serif text-base">+3</span>
-              </div>
-              <span class="text-[9px] font-semibold uppercase tracking-wider">More</span>
-            </a>
+              <span class="flavor-label text-[9px] font-semibold uppercase tracking-wider text-forest">Watermelon</span>
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Massive hero image -->
-      <div class="hero-block relative mx-4 sm:mx-6 lg:mx-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden aspect-[4/5] sm:aspect-[5/4] lg:aspect-square">
+      <div id="hero-block" class="hero-block flavor-mint relative mx-4 sm:mx-6 lg:mx-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden aspect-[4/5] sm:aspect-[5/4] lg:aspect-square">
         <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg" id="hero-image"
              alt="Roze Natural Fresh Mint Toothpaste — 15% Hydroxyapatite"
              class="w-full h-full object-contain p-6 sm:p-10 lg:p-14" />
@@ -259,8 +244,8 @@
           </div>
         </div>
 
-        <!-- Bestseller pill -->
-        <span class="absolute top-5 right-5 sm:top-6 sm:right-6 bg-rose text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-full">Bestseller</span>
+        <!-- Bestseller / contextual pill -->
+        <span id="hero-badge" class="absolute top-5 right-5 sm:top-6 sm:right-6 bg-rose text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-full">Bestseller</span>
 
         <!-- Urgency micro-line at bottom of hero -->
         <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 bg-cream/85 backdrop-blur-md rounded-full px-4 py-2 text-[10px] font-medium">
@@ -271,19 +256,8 @@
 
       <!-- Image carousel -->
       <div class="h-scroll-wrap mt-3 -mx-4 sm:-mx-6 lg:mx-0">
-        <div class="flex gap-3 overflow-x-auto no-scrollbar px-4 sm:px-6 lg:px-0 pb-1">
-          <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 border-forest gallery-thumb active" data-img="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg">
-            <img src="https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg" alt="Front" class="w-full h-full object-contain" />
-          </button>
-          <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 border-transparent gallery-thumb" data-img="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0003_Layer-3.jpg">
-            <img src="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0003_Layer-3-600x600.jpg" alt="Detail" class="w-full h-full object-contain" />
-          </button>
-          <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 border-transparent gallery-thumb" data-img="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0004_Layer-2.jpg">
-            <img src="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0004_Layer-2-600x600.jpg" alt="In use" class="w-full h-full object-contain" />
-          </button>
-          <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 border-transparent gallery-thumb" data-img="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0005_Layer-1.jpg">
-            <img src="https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0005_Layer-1-600x600.jpg" alt="Pack" class="w-full h-full object-contain" />
-          </button>
+        <div id="gallery-thumbs" class="flex gap-3 overflow-x-auto no-scrollbar px-4 sm:px-6 lg:px-0 pb-1">
+          <!-- thumbs populated by JS based on selected flavor -->
         </div>
       </div>
 
@@ -308,7 +282,7 @@
     <div class="lg:col-span-5 mt-6 lg:mt-0 px-4 sm:px-6 lg:px-0">
 
       <!-- Description -->
-      <p class="text-base text-forest/80 leading-relaxed mb-5 font-light">
+      <p class="text-base text-forest/80 leading-relaxed mb-5 font-light" id="product-desc">
         Clinically formulated with <strong class="text-forest font-medium">15% Hydroxyapatite</strong> — the enamel-rebuilding mineral trusted in Japanese dentistry for 40+ years. Fluoride-free. Food-grade. Safe for the whole family.
       </p>
 
@@ -1103,6 +1077,61 @@
 </div>
 
 <script>
+  // Per-flavor product data
+  const FLAVORS = {
+    mint: {
+      title: 'Natural <em class="text-forest/85">Fresh Mint</em>',
+      desc: 'Clinically formulated with <strong class="text-forest font-medium">15% Hydroxyapatite</strong> — the enamel-rebuilding mineral trusted in Japanese dentistry for 40+ years. Fluoride-free. Food-grade. Safe for the whole family.',
+      hero: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg',
+      heroBg: 'flavor-mint',
+      badge: 'Bestseller',
+      thumbs: [
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg', alt: 'Front' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0003_Layer-3.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0003_Layer-3-600x600.jpg', alt: 'Detail' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0004_Layer-2.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0004_Layer-2-600x600.jpg', alt: 'In use' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0005_Layer-1.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2022/06/pro-img_child_0005_Layer-1-600x600.jpg', alt: 'Pack' }
+      ],
+      pack3: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Buy-3-9-Mint-Buy-3-400x400.png',
+      pack6: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Buy-3-10-Mint-Buy-42-400x400.png',
+      stickyImg: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Mint_2000-400x400.jpg',
+      stickyLabel: 'Fresh Mint'
+    },
+    vanilla: {
+      title: 'Natural <em class="text-forest/85">Vanilla</em>',
+      desc: 'Pure Madagascar vanilla extract meets <strong class="text-forest font-medium">15% Hydroxyapatite</strong>. Same clinical enamel-rebuilding science as our Mint, with a subtle warm sweetness kids love. Fluoride-free. Food-grade.',
+      hero: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg',
+      heroBg: 'flavor-vanilla',
+      badge: 'Family Favorite',
+      thumbs: [
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000-300x300.jpg', alt: 'Front' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0000_Layer-6.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0000_Layer-6-600x600.jpg', alt: 'Detail' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0001_Layer-5.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0001_Layer-5-600x600.jpg', alt: 'In use' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0002_Layer-4.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2023/10/pro-img_child_0002_Layer-4-600x600.jpg', alt: 'Pack' }
+      ],
+      pack3: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Buy-3-12-Vanilla-Buy-3-400x400.png',
+      pack6: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Buy-3-11-Vanilla-Buy-42-400x400.png',
+      stickyImg: 'https://rozebiohealth.com/wp-content/uploads/2026/03/Vanilla_2000-300x300.jpg',
+      stickyLabel: 'Vanilla'
+    },
+    watermelon: {
+      title: 'Natural <em class="text-forest/85">Watermelon</em>',
+      desc: 'The kid-favorite flavor with <strong class="text-forest font-medium">15% Hydroxyapatite</strong>. Made for children who refuse mint, but safe and effective for the whole family. Fluoride-free. Food-grade. Safe to swallow.',
+      hero: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg',
+      heroBg: 'flavor-watermelon',
+      badge: 'Kid Favorite',
+      thumbs: [
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', alt: 'Front' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', alt: 'Detail' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', alt: 'In use' },
+        { full: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', thumb: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg', alt: 'Pack' }
+      ],
+      pack3: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg',
+      pack6: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg',
+      stickyImg: 'https://rozebiohealth.com/wp-content/uploads/2026/01/Watermelon_2000-400x400.jpg',
+      stickyLabel: 'Watermelon'
+    }
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     // Scroll reveal
     const obs = new IntersectionObserver((entries, o) => {
@@ -1111,6 +1140,7 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     // State
+    let currentFlavor = 'mint';
     let purchaseType = 'once';
     let qty = 1;
     let addonChecked = false;
@@ -1158,7 +1188,8 @@
       // Sticky bar
       stickyPrice.textContent = `AED ${total.toFixed(total % 1 ? 2 : 0)}`;
       stickyList.textContent = list.toFixed(list % 1 ? 2 : 0);
-      stickyName.textContent = `Fresh Mint · ${sel.querySelector('.font-serif').textContent} ${purchaseType === 'sub' ? 'Subscribe' : ''}`.trim();
+      const flavorLabel = (FLAVORS[currentFlavor] && FLAVORS[currentFlavor].stickyLabel) || 'Fresh Mint';
+      stickyName.textContent = `${flavorLabel} · ${sel.querySelector('.font-serif').textContent}${purchaseType === 'sub' ? ' · Subscribe' : ''}`;
 
       // Free shipping progress (subscribers always free)
       const totalForShip = purchaseType === 'sub' ? FREE_SHIP_AT : total;
@@ -1216,29 +1247,63 @@
       addonInput.addEventListener('change', e => { addonChecked = e.target.checked; updateAll(); });
     }
 
-    // Gallery thumbs
-    const heroImg = document.getElementById('hero-image');
-    document.querySelectorAll('.gallery-thumb').forEach(t => {
-      t.addEventListener('click', () => {
-        document.querySelectorAll('.gallery-thumb').forEach(x => { x.classList.remove('active', 'border-forest'); x.classList.add('border-transparent'); });
-        t.classList.add('active', 'border-forest');
-        t.classList.remove('border-transparent');
-        heroImg.src = t.dataset.img;
+    // ---- Flavor render ----
+    function renderFlavor(flavorKey) {
+      const f = FLAVORS[flavorKey];
+      if (!f) return;
+      currentFlavor = flavorKey;
+
+      // Title + description
+      document.getElementById('product-title').innerHTML = f.title;
+      document.getElementById('product-desc').innerHTML = f.desc;
+
+      // Hero image + background + badge
+      document.getElementById('hero-image').src = f.hero;
+      const block = document.getElementById('hero-block');
+      block.className = block.className.replace(/flavor-\w+/g, '') + ' ' + f.heroBg;
+      document.getElementById('hero-badge').textContent = f.badge;
+
+      // Sticky bar
+      const stickyImg = document.querySelector('.fixed.bottom-0 img');
+      if (stickyImg) stickyImg.src = f.stickyImg;
+
+      // Build gallery thumbs
+      const gallery = document.getElementById('gallery-thumbs');
+      gallery.innerHTML = f.thumbs.map((t, i) => `
+        <button class="snap-item shrink-0 w-[42%] sm:w-[28%] lg:w-[22%] aspect-square rounded-xl bg-paper overflow-hidden p-3 border-2 ${i === 0 ? 'border-forest' : 'border-transparent'} gallery-thumb ${i === 0 ? 'active' : ''}" data-img="${t.full}">
+          <img src="${t.thumb}" alt="${t.alt}" class="w-full h-full object-contain" />
+        </button>
+      `).join('');
+
+      // Wire up new thumbs
+      gallery.querySelectorAll('.gallery-thumb').forEach(t => {
+        t.addEventListener('click', () => {
+          gallery.querySelectorAll('.gallery-thumb').forEach(x => { x.classList.remove('active', 'border-forest'); x.classList.add('border-transparent'); });
+          t.classList.add('active', 'border-forest');
+          t.classList.remove('border-transparent');
+          document.getElementById('hero-image').src = t.dataset.img;
+        });
+      });
+
+      // Update sticky bar label via the main update fn
+      updateAll();
+    }
+
+    // Flavor pill click
+    document.querySelectorAll('.flavor-pill').forEach(p => {
+      p.addEventListener('click', () => {
+        document.querySelectorAll('.flavor-pill').forEach(x => x.classList.remove('active'));
+        p.classList.add('active');
+        const fl = p.dataset.flavor;
+        if (fl) renderFlavor(fl);
       });
     });
 
-    // Flavor pills
-    document.querySelectorAll('.flavor-pill').forEach(p => {
-      if (p.tagName === 'BUTTON') {
-        p.addEventListener('click', () => {
-          document.querySelectorAll('.flavor-pill').forEach(x => x.classList.remove('active'));
-          p.classList.add('active');
-        });
-      }
-    });
+    // Pack card images don't exist yet on initial render — ensure pack cards have <img> tags
+    // (they do — they were in v5 layout. Just need initial render call)
 
-    // Initial update
-    updateAll();
+    // Initial render
+    renderFlavor('mint');
   });
 </script>
 
